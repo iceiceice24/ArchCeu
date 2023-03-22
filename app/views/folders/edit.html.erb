@@ -1,0 +1,36 @@
+<h1>New Folder</h1>
+
+<% if @folder.parent_folder_id.present? %>
+  <p>Parent folder: <%= @folder.parent_folder.name %></p>
+<% end %>
+
+<%= form_with(model: @folder, local: true) do |form| %>
+  <% if @folder.parent_folder_id.blank? %>
+    <div class="field">
+      <%= form.label :parent_folder_id %>
+      <%= form.collection_select(:parent_folder_id, Folder.all, :id, :name, {prompt: "Select parent folder (optional)"}) %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :parent_folder_id %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :files%>
+    <%= form.file_field :files, multiple: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create' %>
+  </div>
+<% end %>
+
+<% if @folder.parent_folder_id.present? %>
+  <%= link_to 'Back', @folder.parent_folder %>
+<% else %>
+  <%= link_to 'Back', folders_path %>
+<% end %>

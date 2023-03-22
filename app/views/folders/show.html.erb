@@ -1,0 +1,23 @@
+<h1><%= @folder.name %></h1>
+<% if @subfolders.any? %>
+  <h2>Subfolders</h2>
+  <ul>
+    <% @subfolders.each do |subfolder| %>
+      <li><%= link_to subfolder.name, subfolder %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @folder.files.attached? %>
+  <% @folder.files.each do |file| %>
+    <div class="row">
+      <div>
+        <%= link_to file.filename %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_folder_path(@folder) %> |
+<%= button_to 'Delete', folder_path(@folder), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'New Subfolder', new_folder_path(parent_id: @folder.id) %>
