@@ -51,7 +51,7 @@ class FoldersController < ApplicationController
 
   def destroy
     @folder.destroy 
-    @folder.files.destroy
+    @folder.files.purge
     redirect_to folders_url, notice: 'Folder was successfully destroyed.'
   end
   
@@ -66,17 +66,7 @@ class FoldersController < ApplicationController
       render :index
     end
   end
-
-  def folder_file
-    @file = @folder.files.find_by_id(params[:id])
-    if @file
-      @file.purge
-      redirect_to @folder, notice: "File was successfully deleted."
-    else
-      redirect_to @folder, alert: "File not found in this folder."
-    end
-  end
-
+  
   private
     def set_folder
       @folder = Folder.find(params[:id])

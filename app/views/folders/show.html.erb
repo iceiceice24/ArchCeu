@@ -12,12 +12,13 @@
 <% if @folder.files.attached? %>
   <h2>Files</h2>
   <ul>
-    <% @folder.files.each do |file| %>
-      <li><%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %></li>
-      <%= button_to "Delete", folder_file_folder_path(file.id), data: { turbo_confirm: "Are you sure you want to delete this file?" }, method: :delete %>
-
-    <% end %>
-  </ul>
+  <% @folder.files.each do |attachment| %>
+    <li>
+      <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+      <%= button_to "delete", purge_attachment_path(attachment), method: :delete %>
+    </li>
+  <% end %>
+</ul>
 <% end %>
 
 <%= link_to 'Add files', edit_folder_path(@folder) %> |
