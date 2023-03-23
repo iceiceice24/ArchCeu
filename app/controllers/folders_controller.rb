@@ -1,5 +1,5 @@
 class FoldersController < ApplicationController
-  before_action :set_folder, only: [:show, :edit, :update, :destroy]
+  before_action :set_folder, only: [:show, :edit, :update, :destroy, :folder_file]
 
   def index
     @folders = Folder.roots
@@ -50,10 +50,32 @@ class FoldersController < ApplicationController
   end
 
   def destroy
-    @folder.destroy
+    @folder.destroy 
+    @folder.files.destroy
     redirect_to folders_url, notice: 'Folder was successfully destroyed.'
   end
   
+  def search
+    query = params[:q]
+    @folder = Folder.where('name LIKE ?', "%#{query}%").first
+
+    if @folder
+      redirect_to @folder
+    else
+      flash.now[:alert] = "Folder not found."
+      render :index
+    end
+  end
+
+  def folder_file
+    @file = @folder.files.find_by_id(params[:id])
+    if @file
+      @file.purge
+      redirect_to @folder, notice: "File was successfully deleted."
+    else
+      redirect_to @folder, alert: "File not found in this folder."
+    end
+  end
 
   private
     def set_folder
@@ -61,6 +83,6 @@ class FoldersController < ApplicationController
     end
 
     def folder_params
-      params.require(:folder).permit(:name, :parent_folder_id)
+      params.require(:folder).permit(:name, :parent_folder_id,  files: [])
     end
 end

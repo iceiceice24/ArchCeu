@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   resources :folders
 
   get '/search_folders', to: 'folders#search', as: 'search_folders'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  
+  resources :folders do
+    member do
+      delete :folder_file
+    end
+  end
+  
 end

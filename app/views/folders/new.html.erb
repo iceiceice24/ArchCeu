@@ -18,11 +18,16 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-  <%= form.label :parent_folder_id %>
-  <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
+   <div class="field">
+    <%= form.label :files %>
+    <%= form.file_field :files, multiple: true %>
+  </div>
 
-</div>
+
+  <div class="field">
+    <%#= form.label :parent_folder_id %>
+    <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
+  </div>
 
 
   <div class="actions">
