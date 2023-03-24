@@ -11,10 +11,7 @@
     <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :files%>
-    <%= form.file_field :files, multiple: true %>
-  </div>
+  <%= render "folders/form", form: form %>
 
   <div class="actions">
     <%= form.submit 'Create' %>
