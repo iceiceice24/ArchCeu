@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  get 'folders/index'
-  get 'folders/show'
-  get 'folders/new'
-  get 'folders/create'
-  get 'folders/edit'
-  get 'folders/update'
-  get 'folders/destroy'
+  resources :folders do
+    resources :subfolders, controller: 'folders', only: [:new, :create]
+  end
   resources :folders
   root 'folders#index'
 
