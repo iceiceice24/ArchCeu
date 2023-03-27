@@ -10,5 +10,12 @@ class Folder < ApplicationRecord
     def self.roots
       where(parent_folder_id: nil)
     end
+
+    def self.search(query)
+      where("name LIKE ?", "%#{query}%")
+        .includes(files_attachments: :blob)
+        .where("active_storage_blobs.filename LIKE ?", "%#{query}%")
+    end
+
   end
   
