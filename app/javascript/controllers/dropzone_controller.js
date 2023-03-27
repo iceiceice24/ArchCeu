@@ -51,21 +51,13 @@ export default class extends Controller {
   get url() {
     return this.inputTarget.getAttribute("data-direct-upload-url");
   }
-  get maxFiles() {
-    return this.data.get("maxFiles") || 1;
-  }
-  get maxFileSize() {
-    return this.data.get("maxFileSize") || 256;
-  }
-  get acceptedFiles() {
-    return this.data.get("acceptedFiles");
-  }
+ 
 
   get addRemoveLinks() {
     return this.data.get("addRemoveLinks") || true;
   }
   get uploadMultiple() {
-    return this.data.get("uploadMultiple") || false;
+    return this.data.get("uploadMultiple") || true;
   }
   get form() {
     return this.element.closest("form");
