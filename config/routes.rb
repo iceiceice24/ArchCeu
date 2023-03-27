@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'folders#index'
 
   get '/search_folders', to: 'folders#search', as: 'search_folders'
+  get 'folders/back'
 
   
   delete "attachments/:id/purge", to: "attachments#purge", as: "purge_attachment"

@@ -57,16 +57,10 @@ class FoldersController < ApplicationController
   
   def search
     query = params[:q]
-    folder = Folder.where('name LIKE ?', "%#{query}%").first
-    
-    if folder.present?
-      files = folder.files.where('filename LIKE ?', "%#{query}%")
-      if files.any?
-        redirect_to folder_file_path(folder, files.first)
-      else
-        flash.now[:alert] = "No files found in this folder matching '#{query}'."
-        render :show
-      end
+    @folder = Folder.where('name LIKE ?', "%#{query}%").first
+
+    if @folder
+      redirect_to @folder
     else
       flash.now[:alert] = "Folder not found."
       render :index
