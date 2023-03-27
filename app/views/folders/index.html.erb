@@ -5,13 +5,10 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<% if @folders.present? %>
-  <h2>Search Results:</h2>
+<ul>
   <% @folders.each do |folder| %>
-    <p><%= link_to folder.name, folder_path(folder) %></p>
+    <li><%= link_to folder.name, folder %></li>
   <% end %>
-<% else %>
-  <p>No results found.</p>
-<% end %>
+</ul>
 
 <%= link_to 'New Folder', new_folder_path %>
