@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users do
-    resources :folders do
+  devise_for :users 
+  resources :users do
+    resources :folders, only: [:index, :new, :create]
       resources :subfolders, controller: 'folders', only: [:new, :create]
-    end
+    
   end
   
   resources :folders
