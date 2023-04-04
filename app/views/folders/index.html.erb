@@ -6,7 +6,10 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<ul>
+  <% if current_user %>
+    <%= link_to 'show', folders_path, class:'btn btn-secondary' %>
+    <ul>
+
   <% if @folders %>
     <% @folders.each do |folder| %>
       <li><%= link_to folder.name, folder %></li>
@@ -15,5 +18,10 @@
     <li>No folders found.</li>
   <% end %>
 </ul>
+  <% else %>
+    <%= link_to "Login", new_user_session_path %>
+    
+  <% end %>
+
 
 <%= link_to 'New Folder', new_folder_path %>

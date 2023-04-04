@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :folders do
-    resources :subfolders, controller: 'folders', only: [:new, :create]
+
+  devise_for :users do
+    resources :folders do
+      resources :subfolders, controller: 'folders', only: [:new, :create]
+    end
   end
+  
   resources :folders
   root 'folders#index'
 
@@ -10,6 +14,4 @@ Rails.application.routes.draw do
 
   
   delete "attachments/:id/purge", to: "attachments#purge", as: "purge_attachment"
-  
-  # get 'folders/:parent_id/:id', to: 'folders#host', as: 'find_folder'
 end
