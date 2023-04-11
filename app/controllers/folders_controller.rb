@@ -41,7 +41,7 @@ class FoldersController < ApplicationController
     end
   
     if @folder.save
-      redirect_to folders_path, notice: "Folder was successfully created."
+      redirect_to @folder, notice: "Folder was successfully created."
     else
       render :new
     end
@@ -65,8 +65,8 @@ class FoldersController < ApplicationController
   
   def search
     query = params[:q]
-    @folder = Folder.where('name LIKE ?', "%#{query}%").first
-
+    @folder = Folder.where('lower(name) LIKE ?', "%#{query.downcase}%").first
+  
     if @folder
       redirect_to @folder
     else
@@ -74,6 +74,7 @@ class FoldersController < ApplicationController
       render :index
     end
   end
+  
   
   
   private

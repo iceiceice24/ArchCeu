@@ -1,14 +1,13 @@
 <h1><%= @folder.name %></h1>
 
 <%= form_tag(search_folders_path, method: "get") do %>
-   <h4> Case sensitive </h4>
   <%= text_field_tag :q, params[:q], placeholder: "Search Folders" %>
   <%= submit_tag "Search" %>
 <% end %>
 
 <% if @subfolders.any? %>
   <h2>Subfolders</h2>
-  <ul>
+  <ul data-controller="sortable">
     <% @subfolders.each do |subfolder| %>
       <li><%= link_to subfolder.name, subfolder %></li>
     <% end %>

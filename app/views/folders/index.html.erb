@@ -1,27 +1,35 @@
 <h1>Folders</h1>
 
 <%= form_tag(search_folders_path, method: "get") do %>
-   <h4> Case sensitive </h4>
   <%= text_field_tag :q, params[:q], placeholder: "Search Folder" %>
   <%= submit_tag "Search" %>
 <% end %>
 
-  <% if current_user %>
-  <ul>
-
-    <% if @folders %>
+<% if current_user %>
+  <% if @folders %>
+  
+    <div>
+    <ul data-controller="sortable">
       <% @folders.each do |folder| %>
-        <li><%= link_to folder.name, folder %></li>
+        <a href="<%= folder_path(folder) %>" class="card folder-link">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= folder.name %>
+            </h5>
+            <!-- Additional folder details or actions can be added here -->
+          </div>
+        </a>
       <% end %>
-    <% else %>
-      <li>No folders found.</li>
-    <% end %>
-    <%= link_to 'New Folder', new_user_folder_path(@user) %>
-  </ul>
+    </ul>
+    </div>
+  
+  <%= link_to 'New Folder', new_user_folder_path(@user) %>
   <% else %>
-    <%= link_to "Login", new_user_session_path %>
-    
+    <p>No folders found.</p>
   <% end %>
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
 
 
 
