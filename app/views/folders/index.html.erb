@@ -16,6 +16,7 @@
     <% else %>
       <li>No folders found.</li>
     <% end %>
+    <%= link_to 'New Folder', new_user_folder_path(@user) %>
   </ul>
   <% else %>
     <%= link_to "Login", new_user_session_path %>
@@ -23,4 +24,4 @@
   <% end %>
 
 
-<%= link_to 'New Folder', new_user_folder_path(@user) %>
+

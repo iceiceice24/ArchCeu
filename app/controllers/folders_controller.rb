@@ -6,6 +6,10 @@ class FoldersController < ApplicationController
     @folders = Folder.roots
   end
 
+  def home
+    @folders = Folder.roots
+  end
+
   def show
     @subfolders = @folder.subfolders
   end
