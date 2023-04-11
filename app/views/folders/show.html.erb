@@ -1,4 +1,4 @@
-<h1><%= @folder.name %></h1>
+<h1><%= link_to @folder.name, folders_path%></h1>
 
 <%= form_tag(search_folders_path, method: "get") do %>
    <h4> Case sensitive </h4>

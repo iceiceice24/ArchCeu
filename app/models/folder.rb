@@ -1,5 +1,5 @@
 class Folder < ApplicationRecord
-  belongs_to :user
+    belongs_to :user
     validates :name, presence: true
   
     belongs_to :parent_folder, class_name: 'Folder', optional: true
