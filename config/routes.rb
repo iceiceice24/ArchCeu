@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  root 'folders#index'
-  devise_for :users 
-  resources :folders
 
+  devise_for :users 
   resources :users do
-    resources :folders do
-      resources :subfolders, controller: 'folders', only: [:new, :create]    
-    end
+    resources :folders, only: [:index, :new, :create]
+      resources :subfolders, controller: 'folders', only: [:new, :create]
+    
   end
   
+  resources :folders
+  root 'folders#home'
 
   get '/search_folders', to: 'folders#search', as: 'search_folders'
   get 'folders/back'
