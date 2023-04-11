@@ -9,8 +9,9 @@
   <% if @folders %>
   
     <div>
-    <ul data-controller="sortable">
+    <ul data-controller="sortable" class="folder-list"> <!-- Add a custom class for styling -->
       <% @folders.each do |folder| %>
+      <li class="folder-item"> <!-- Add a custom class for styling -->
         <a href="<%= folder_path(folder) %>" class="card folder-link">
           <div class="card-body">
             <h5 class="card-title">
@@ -19,6 +20,7 @@
             <!-- Additional folder details or actions can be added here -->
           </div>
         </a>
+      </li>
       <% end %>
     </ul>
     </div>
@@ -30,6 +32,3 @@
 <% else %>
   <%= link_to "Login", new_user_session_path %>
 <% end %>
-
-
-

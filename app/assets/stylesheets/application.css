@@ -18,7 +18,7 @@
    border-radius: 10px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    margin-bottom: 10px;
-   width: 45%; /* Set a width for each card to fit two cards in a row */
+   width: 70%; /* Set a width for each card to fit two cards in a row */
    display: inline-block; /* Display cards in inline-block mode */
    margin-right: 20px;
    margin-top: 20px;
@@ -49,3 +49,22 @@
  .folder-link:hover {
    color: #ff6b6b;
  }
+
+ .folder-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .folder-item {
+    display: inline-block; /* Display list items side by side */
+    margin-right: 10px; /* Add some spacing between list items */
+  }
+  
+
+ .no-bullets {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+  }
+  
