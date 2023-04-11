@@ -1,7 +1,6 @@
 <h1><%= @folder.name %></h1>
 
 <%= form_tag(search_folders_path, method: "get") do %>
-   <h4> Case sensitive </h4>
   <%= text_field_tag :q, params[:q], placeholder: "Search Folders" %>
   <%= submit_tag "Search" %>
 <% end %>

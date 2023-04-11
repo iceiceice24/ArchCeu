@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   
   resources :folders
-  root 'folders#index'
+  root 'folders#home'
 
   get '/search_folders', to: 'folders#search', as: 'search_folders'
   get 'folders/back'
