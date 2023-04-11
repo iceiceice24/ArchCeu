@@ -12,15 +12,17 @@ class FoldersController < ApplicationController
 
   def new
     @folder = Folder.new
-    @parent_folder = @user.folders.build(params[:parent_folder_id])
+    @parent_folder = Folder.find_by(id: params[:parent_folder_id])
   end
+  
   
 
   def edit
   end
 
   def create
-    @folder = Folder.new(folder_params)
+    @user = User.find(params[:user_id])
+    @folder = @user.folders.build(folder_params)
   
     if @folder.parent_folder_id.present?
       parent_folder = Folder.find_by(id: @folder.parent_folder_id)
@@ -35,11 +37,12 @@ class FoldersController < ApplicationController
     end
   
     if @folder.save
-      redirect_to root_path, notice: 'Folder was successfully created.'
+      redirect_to folders_path, notice: "Folder was successfully created."
     else
       render :new
     end
   end
+  
 
 
   def update
