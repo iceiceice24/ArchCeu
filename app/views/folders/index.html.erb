@@ -1,3 +1,42 @@
+<style>
+  /* Card styles */
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    width: 45%; /* Set a width for each card to fit two cards in a row */
+    display: inline-block; /* Display cards in inline-block mode */
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-left: 20px; /* Add some margin between cards */
+    vertical-align: top; /* Align cards to the top of the row */
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  /* Folder link styles */
+  .folder-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .folder-link:hover {
+    color: #ff6b6b;
+  }
+</style>
+
 <h1>Folders</h1>
 
 <%= form_tag(search_folders_path, method: "get") do %>
@@ -5,21 +44,25 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-  <% if current_user %>
-  <ul>
-
-    <% if @folders %>
+<% if current_user %>
+  <% if @folders %>
+    <div>
       <% @folders.each do |folder| %>
-        <li><%= link_to folder.name, folder %></li>
+        <a href="<%= folder_path(folder) %>" class="card folder-link">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= folder.name %>
+            </h5>
+            <!-- Additional folder details or actions can be added here -->
+          </div>
+        </a>
       <% end %>
-    <% else %>
-      <li>No folders found.</li>
-    <% end %>
-  </ul>
+    </div>
   <% else %>
-    <%= link_to "Login", new_user_session_path %>
-    
+    <p>No folders found.</p>
   <% end %>
-
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
 
 <%= link_to 'New Folder', new_user_folder_path(@user) %>
