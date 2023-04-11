@@ -36,7 +36,7 @@ class FoldersController < ApplicationController
     end
   
     if @folder.save
-      redirect_to root_path, notice: 'Folder was successfully created.'
+      redirect_to @folder, notice: 'Folder was successfully created.'
     else
       render :new
     end

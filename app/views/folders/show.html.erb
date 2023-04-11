@@ -8,7 +8,7 @@
 
 <% if @subfolders.any? %>
   <h2>Subfolders</h2>
-  <ul>
+  <ul data-controller="sortable">
     <% @subfolders.each do |subfolder| %>
       <li><%= link_to subfolder.name, subfolder %></li>
     <% end %>
