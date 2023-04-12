@@ -6,9 +6,9 @@
         <%= image_tag 'logo.png', style: 'height: 150px; width: 330px; vertical-align: top;' %>
       </div>
       <div class="btn-field">
-        <% if current_user %>
+        <% if user_signed_in? %>
             <%= link_to "Edit Account", edit_user_registration_path %>
-            <%= link_to 'View Folders', user_folders_path(@user) %>          
+            <%= link_to 'View Folders', user_folders_path(@user) %>             
         <% else %>
           <%= link_to "Login", new_user_session_path %>
           <%= link_to "Create Account", new_user_registration_path %>
@@ -17,6 +17,6 @@
     </form>
   </div>
 </div>
-<%= button_to 'Logout', destroy_user_session_path, data: {turbo: 'false'}, method: :delete %>
+
 
 <%= link_to 'folders', folders_path %>

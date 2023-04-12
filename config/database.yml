@@ -23,6 +23,8 @@ default: &default
   username: postgres
   password: ice
   host: localhost
+  username: postgres
+  password: adosh
 
 development:
   <<: *default
