@@ -1,0 +1,29 @@
+<section class="container">
+<h1>Edit User</h1>
+</section>
+
+<section class="container">
+<%= form_for [:admin, @user] do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <% if current_user.admin? %>
+    <%= f.label :role %>
+    <%= f.select :role, options_for_select([['Choose...', nil], ['User', 'user'], ['Moderator', 'moderator'], ['Admin', 'admin']]), class: 'form-select' %>
+  <% end %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  </br>
+  <%= f.submit 'Update User', data: {turbo: false} %>
+
+<% end %>
+</section>
+
+<section class="container">
+<%= button_to 'Delete User', delete_user_admin_user_path(@user),class:"btn btn-outline-danger", method: :delete,data: {turbo: false} %>
+<%= link_to 'Back', root_path %>
+</section>

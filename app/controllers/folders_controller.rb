@@ -1,14 +1,18 @@
 class FoldersController < ApplicationController
   before_action :set_user
   before_action :set_folder, only: [:show, :edit, :update, :destroy, :folder_file]
+ 
 
   def index
     @folders = Folder.roots
+    @folder = Folder.new
   end
+
+
 
   def home
     @folders = Folder.roots
-  end
+  end 
 
   def show
     @subfolders = @folder.subfolders
@@ -89,5 +93,9 @@ class FoldersController < ApplicationController
 
     def folder_params
       params.require(:folder).permit(:name, :parent_folder_id,  files: [])
+    end
+
+    def initialize_folder
+      @folder = Folder.new
     end
 end

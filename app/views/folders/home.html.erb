@@ -8,7 +8,12 @@
       </div>
       <div class="btn-field">
         <% if current_user %>
-            <%= link_to 'View Folders', user_folders_path(@user), class: 'view-button' %>          
+            <% if current_user.admin? %>
+              <%= User.count %>
+              <%= link_to "All Users",  admin_users_path %>
+            <% end %>            
+            <%= link_to 'View Folders', user_folders_path(@user) %>  
+            <%= link_to 'Logout', destroy_user_session_path, 'data-turbo-method': :delete %>
         <% else %>
           <%= link_to "Login", new_user_session_path %>
           <%= link_to "Create Account", new_user_registration_path %>

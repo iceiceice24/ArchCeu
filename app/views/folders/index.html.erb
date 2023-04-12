@@ -8,17 +8,23 @@
 <% if current_user %>
   <% if @folders %>
   
-    <div>
+    <div class="card-deck">
+    <ul data-controller="sortable" class="folder-list"> <!-- Add a custom class for styling -->
+    
     <ul data-controller="sortable">
       <% @folders.each do |folder| %>
+      <li class="folder-item"> <!-- Add a custom class for styling -->
         <a href="<%= folder_path(folder) %>" class="card folder-link">
           <div class="card-body">
-            <h5 class="card-title">
-              <%= folder.name %>
-            </h5>
+          
+            <div class="folder-name">
+              
+            </div>
             <!-- Additional folder details or actions can be added here -->
           </div>
         </a>
+        <%= folder.name.truncate(10)%>
+      </li>
       <% end %>
     </ul>
     </div>
@@ -31,5 +37,11 @@
   <%= link_to "Login", new_user_session_path %>
 <% end %>
 
+<%= form_for @folder do |r| %>
+  <%= render "folders/form", form: r %>
+  <div class="actions">
+    <%= r.submit 'Upload', data: {turbo: false} %>
+  </div>
+<% end %>
 
-
+<%= link_to 'Back', 'javascript:history.go(-1);' %>

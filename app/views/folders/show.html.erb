@@ -16,7 +16,7 @@
 
 <% if @folder.files.attached? %>
   <h2>Files</h2>
-  <ul>
+  <ul data-controller="sortable">
   <% @folder.files.each do |attachment| %>
     <li>
       <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
@@ -26,10 +26,15 @@
 </ul>
 <% end %>
 
-<%= link_to 'Add files', edit_folder_path(@folder) %> |
-<%= button_to 'Delete', folder_path(@folder), method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'New Subfolder', new_folder_path(parent_folder_id: @folder.id) %>
+<%= link_to 'Add files', edit_folder_path(@folder) %> 
+<%= button_to 'Delete', folder_path(@folder), method: :delete, data: { confirm: 'Are you sure?' } %> 
+<%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id) %>
 </br>
 </br>
-
-<%= link_to "Back", :back %>
+<%= form_for @folder do |r| %>
+  <%= render "folders/form", form: r %>
+  <div class="actions">
+    <%= r.submit 'Upload', data: {turbo: false} %>
+  </div>
+<% end %>
+<%= link_to 'Back', 'javascript:history.go(-1);' %>
