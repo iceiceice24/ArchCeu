@@ -18,11 +18,12 @@
           <div class="card-body">
           
             <div class="folder-name">
-              <%= folder.name %>
+              
             </div>
             <!-- Additional folder details or actions can be added here -->
           </div>
         </a>
+        <%= folder.name.truncate(10)%>
       </li>
       <% end %>
     </ul>

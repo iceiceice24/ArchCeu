@@ -56,14 +56,16 @@
  }
 
  .folder-list {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
   }
   
   .folder-item {
-    display: inline-block; /* Display list items side by side */
-    margin-right: 10px; /* Add some spacing between list items */
+    display: inline-block; 
+    margin-right: 10px;
+    text-align: center;
+    width: 220px;
   }
   
 
