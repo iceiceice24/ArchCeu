@@ -1,12 +1,11 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Cambria', Georgia, serif;
+    font-family: 'Libre Baskerville', serif;
     box-sizing: border-box;
 }
 
 .signup-page{
-    background-image: url('bg1.jpeg');
     background: linear-gradient(to right, rgba(242, 116, 179, 0.8), #803b5d);
     background-repeat: no-repeat;
     background-size: cover;

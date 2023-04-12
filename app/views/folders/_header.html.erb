@@ -1,2 +1,52 @@
-<h1>Folders#update</h1>
-<p>Find me in app/views/folders/update.html.erb</p>
+<nav class="navbar">
+    <ul class="navbar-nav">
+      <li class="logo">
+        <a href="#" class="nav-link">
+        <span class="link-text logo-text">CEUARCH</span>
+      </li>
+      
+      <li class="nav-item">
+        <%= link_to folders_path(@user), class: 'nav-link' do %>
+        <img src="<%= asset_path 'file.png' %>" alt="departments_icon" height="50" width="50">
+        <span class="link-text">Files</span>
+        <% end %>
+      </li>
+
+      <li class="nav-item"> 
+        <div class="dropdown">
+          <%= link_to folders_path(@user), class: 'nav-link' do %>
+          <img src="<%= asset_path 'folder.png' %>" alt="folders_icon" height="50" width="50">
+          <span class="link-text">Folders</span>
+      <% end %>
+
+        <div class="dropdown-content">
+          <% @folders.each do |folder| %>
+          <%= link_to folder.name, folders_path(@user, folder) %>
+          <%#= button_to 'Delete', user_folder_path(@user.id, folder), data: { confirm: 'Are you sure?' }, method: :delete%>
+      <% end %> 
+        </div>
+      </div>
+      </li>
+
+      <li class="nav-item">
+          <%= link_to edit_user_registration_path(@user), class: 'nav-link' do %>
+          <img src="<%= asset_path 'user_add.png' %>" alt="update_user_icon" height="50" width="50">
+          <span class="link-text">Update User</span>
+          <% end %>
+      </li>
+
+      <li class="nav-item">
+          <%= link_to edit_user_registration_path(@user), class: 'nav-link' do %>
+          <img src="<%= asset_path 'profile.png' %>" alt="profile_icon" height="50" width="50">
+          <span class="link-text">User Privileges</span>
+          <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= button_to destroy_user_session_path, data: {turbo: "false"}, method: :delete, class: 'nav-link', style: 'width: 100%;' do %>
+        <img src="<%= asset_path 'logout.png' %>" alt="logout_icon" height="50" width="50">
+        <span class="link-text">Log Out</span>
+        <% end %>
+      </li> 
+    </ul>
+  </nav>
