@@ -8,6 +8,8 @@ class FoldersController < ApplicationController
     @folder = Folder.new
   end
 
+
+
   def home
     @folders = Folder.roots
   end 
