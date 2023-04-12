@@ -18,11 +18,12 @@
           <div class="card-body">
           
             <div class="folder-name">
-              <%= folder.name %>
+              
             </div>
             <!-- Additional folder details or actions can be added here -->
           </div>
         </a>
+        <%= folder.name %>
       </li>
       <% end %>
     </ul>
@@ -35,3 +36,12 @@
 <% else %>
   <%= link_to "Login", new_user_session_path %>
 <% end %>
+
+<%= form_for @folder do |r| %>
+  <%= render "folders/form", form: r %>
+  <div class="actions">
+    <%= r.submit 'Upload', data: {turbo: false} %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', 'javascript:history.go(-1);' %>

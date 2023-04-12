@@ -14,12 +14,8 @@
   <%= render "folders/form", form: form %>
 
   <div class="actions">
-    <%= form.submit 'Create' %>
+    <%= form.submit 'Update', data: {turbo: false} %>
   </div>
 <% end %>
 
-<% if @folder.parent_folder_id.present? %>
-  <%= link_to 'Back', @folder.parent_folder %>
-<% else %>
-  <%= link_to 'Back', folders_path %>
-<% end %>
+<%= link_to 'Back', 'javascript:history.go(-1);' %>
