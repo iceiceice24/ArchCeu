@@ -19,12 +19,29 @@
   <ul data-controller="sortable">
   <% @folder.files.each do |attachment| %>
     <li>
-      <%= attachment.filename %>
+      <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
       <%= button_to "delete", purge_attachment_path(attachment), method: :delete %>
     </li>
   <% end %>
 </ul>
 <% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>File Type</th>
+      <th>Date Created</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %></td>
+      <td><%= button_to "delete", purge_attachment_path(attachment), method: :delete %></td>
+    </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Add files', edit_folder_path(@folder) %> 
 <%= button_to 'Delete', folder_path(@folder), method: :delete, data: { confirm: 'Are you sure?' } %> 

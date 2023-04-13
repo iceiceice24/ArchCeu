@@ -8,6 +8,15 @@ class Folder < ApplicationRecord
   
     has_many_attached :files, dependent: :destroy
 
+    def files=(attachables)
+      attachables = Array(attachables).compact_blank
+ 
+     if attachables.any?
+       attachment_changes["files"] =
+         ActiveStorage::Attached::Changes::CreateMany.new("files", self, files.blobs + attachables)
+     end
+   end
+
     def self.roots
       where(parent_folder_id: nil)
     end

@@ -4,17 +4,17 @@
   <p>Parent folder: <%= @folder.parent_folder.name %></p>
 <% end %>
 
-<%= form_with(model: @folder, local: true) do |form| %>
+<%= form_with(model: @folder, local: true) do |f| %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
 
-  <%= render "folders/form", form: form %>
+  <%= render "folders/form", form: f %>
 
   <div class="actions">
-    <%= form.submit 'Update', data: {turbo: false} %>
+    <%= f.submit 'Update', data: {turbo: false} %>
   </div>
 <% end %>
 
