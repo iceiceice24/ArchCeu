@@ -1,14 +1,11 @@
 class FoldersController < ApplicationController
   before_action :set_user
-  before_action :set_folder, only: [:show, :edit, :update, :destroy, :folder_file]
+  before_action :set_folder, only: [:show, :edit, :update, :destroy]
  
-
   def index
     @folders = Folder.roots
     @folder = Folder.new
   end
-
-
 
   def home
     @folders = Folder.roots
@@ -22,8 +19,6 @@ class FoldersController < ApplicationController
     @folder = Folder.new
     @parent_folder = Folder.find_by(id: params[:parent_folder_id])
   end
-  
-  
 
   def edit
   end
@@ -50,8 +45,6 @@ class FoldersController < ApplicationController
       render :new
     end
   end
-  
-
 
   def update
     if @folder.update(folder_params)
@@ -78,9 +71,7 @@ class FoldersController < ApplicationController
       render :index
     end
   end
-  
-  
-  
+
   private
 
     def set_user
@@ -92,7 +83,7 @@ class FoldersController < ApplicationController
     end
 
     def folder_params
-      params.require(:folder).permit(:name, :parent_folder_id,  files: [])
+      params.require(:folder).permit(:name, :parent_folder_id, files: [])
     end
 
     def initialize_folder

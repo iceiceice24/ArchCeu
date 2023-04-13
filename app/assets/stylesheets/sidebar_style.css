@@ -23,7 +23,9 @@
   main {
     margin-left: 5rem;
     padding: 1rem;
+    padding-right: 15px; /* set to width of scrollbar */
   }
+  
   
   .navbar {
     position: fixed;
@@ -89,12 +91,6 @@
     margin-left: 1rem;
   }
   
-  .nav-link svg {
-    width: 2rem;
-    min-width: 2rem;
-    margin: 0 1.5rem;
-  }
-  
   .fa-primary {
     color: #ff7eee;
   }
@@ -119,12 +115,7 @@
     letter-spacing: 0.3ch;
     width: 100%;
   }
-  
-  .logo svg {
-    transform: rotate(0deg);
-    transition: var(--transition-speed);
-  }
-  
+ 
   .logo-text {
     display: inline;
     position: absolute;
@@ -153,8 +144,11 @@
     }
   
     main {
-      margin: 0;
+      margin-left: 5rem;
+      padding: 1rem;
+      padding-right: 15px; /* set to width of scrollbar */
     }
+    
   }
   
   /* Large screens */

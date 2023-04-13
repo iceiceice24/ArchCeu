@@ -19,7 +19,7 @@
   <ul data-controller="sortable">
   <% @folder.files.each do |attachment| %>
     <li>
-      <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+      <%= attachment.filename %>
       <%= button_to "delete", purge_attachment_path(attachment), method: :delete %>
     </li>
   <% end %>
@@ -29,12 +29,15 @@
 <%= link_to 'Add files', edit_folder_path(@folder) %> 
 <%= button_to 'Delete', folder_path(@folder), method: :delete, data: { confirm: 'Are you sure?' } %> 
 <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id) %>
+
 </br>
 </br>
+
 <%= form_for @folder do |r| %>
   <%= render "folders/form", form: r %>
   <div class="actions">
     <%= r.submit 'Upload', data: {turbo: false} %>
   </div>
 <% end %>
+
 <%= link_to 'Back', 'javascript:history.go(-1);' %>

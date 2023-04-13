@@ -1,7 +1,6 @@
 <nav class="navbar">
     <ul class="navbar-nav">
-      <li class="logo">
-        <a href="#" class="nav-link">
+      <li class="logo">        
         <span class="link-text logo-text">CEUARCH</span>
       </li>
       
@@ -18,13 +17,6 @@
           <img src="<%= asset_path 'folder.png' %>" alt="folders_icon" height="50" width="50">
           <span class="link-text">Folders</span>
       <% end %>
-
-        <div class="dropdown-content">
-          <% @folders.each do |folder| %>
-          <%= link_to folder.name, folders_path(@user, folder) %>
-          <%#= button_to 'Delete', user_folder_path(@user.id, folder), data: { confirm: 'Are you sure?' }, method: :delete%>
-      <% end %> 
-        </div>
       </div>
       </li>
 
