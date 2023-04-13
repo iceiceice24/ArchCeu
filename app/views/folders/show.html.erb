@@ -14,32 +14,31 @@
   </ul>
 <% end %>
 
-<% if @folder.files.attached? %>
-  <h2>Files</h2>
-  <ul data-controller="sortable">
-  <% @folder.files.each do |attachment| %>
-    <li>
-      <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
-      <%= button_to "delete", purge_attachment_path(attachment), method: :delete %>
-    </li>
-  <% end %>
-</ul>
-<% end %>
 
 <table>
   <thead>
     <tr>
       <th>File name</th>
-      <th>File Type</th>
-      <th>Date Created</th>
+      <th> File Type </th>
+      <th> Date Created </th>
+       <th> Action </th>
+
     </tr>
   </thead>
 
-  <tbody>
+ <tbody>
+ <% if @folder.files.attached? %>
+  <ul data-controller="sortable">
+  <% @folder.files.each do |attachment| %>
     <tr>
       <td><%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %></td>
+      <td><%= attachment.content_type%> </td>
+      <td><%= attachment.created_at%> </td>
       <td><%= button_to "delete", purge_attachment_path(attachment), method: :delete %></td>
     </tr>
+    <% end %>
+  </ul>
+  <% end %>
   </tbody>
 </table>
 
