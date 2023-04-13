@@ -13,6 +13,7 @@ class FoldersController < ApplicationController
 
   def show
     @subfolders = @folder.subfolders
+    
   end
 
   def new
