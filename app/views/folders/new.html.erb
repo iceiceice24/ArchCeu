@@ -1,36 +1,35 @@
-<h1>New Folder</h1>
+<div class="container">
+  <h1>New Folder</h1>
 
-<%= form_with(model: [@user, @folder], url: user_folders_path(user_id: @user.id)) do |form| %>
+  <%= form_with(model: [@user, @folder], url: user_folders_path(user_id: @user.id)) do |form| %>
 
-  <% if @folder.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+    <% if @folder.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
 
-      <ul>
-        <% @folder.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @folder.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <%= render "folders/form", form: form %>
+
+    <div class="form-group">
+      <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'Create Folder', data: {turbo: false}, class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-   <%= render "folders/form", form: form %>
-
-
-  <div class="field">
-    <%#= form.label :parent_folder_id %>
-    <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit data: {turbo: false} %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', 'javascript:history.go(-1);' %>
+  <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-secondary" %>
+</div>

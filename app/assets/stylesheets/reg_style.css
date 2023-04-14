@@ -18,6 +18,12 @@
     position: relative;
 }
 
+.container-fluid-index{
+    margin-left: 100px;
+
+
+}
+
 .form-box{
     width: 90%;
     max-width: 450px;

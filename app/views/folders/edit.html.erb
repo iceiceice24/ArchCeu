@@ -1,21 +1,22 @@
-<h1>Edit Folder</h1>
+<div class="container">
+  <h1>Edit Folder</h1>
 
-<% if @folder.parent_folder_id.present? %>
-  <p>Parent folder: <%= @folder.parent_folder.name %></p>
-<% end %>
+  <% if @folder.parent_folder_id.present? %>
+    <p>Parent folder: <%= @folder.parent_folder.name %></p>
+  <% end %>
 
-<%= form_with(model: @folder, local: true) do |f| %>
+  <%= form_with(model: @folder, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <%= render "folders/form", form: f %>
 
-  <%= render "folders/form", form: f %>
+    <div class="form-group">
+      <%= f.submit 'Update', data: {turbo: false}, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
-  <div class="actions">
-    <%= f.submit 'Update', data: {turbo: false} %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', 'javascript:history.go(-1);' %>
+  <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-secondary" %>
+</div>
