@@ -2,18 +2,13 @@
  <div class="container-fluid-index">
 <h1>Folders</h1>
 
-<%= form_tag(search_folders_path, method: "get") do %>
-  <%= text_field_tag :q, params[:q], placeholder: "Search Folder" %>
-  <%= submit_tag "Search" %>
-<% end %>
+
 
 <% if current_user %>
   <% if @folders %>
   
     <div class="card-deck">
     <ul data-controller="sortable" class="folder-list"> <!-- Add a custom class for styling -->
-    
-    <ul data-controller="sortable">
       <% @folders.each do |folder| %>
       <li class="folder-item"> <!-- Add a custom class for styling -->
         <a href="<%= folder_path(folder) %>" class="card folder-link">
@@ -29,8 +24,7 @@
       </li>
       <% end %>
     </ul>
-    </div>
-  
+      </div>  
   <%= link_to 'New Folder', new_user_folder_path(@user) %>
   <% else %>
     <p>No folders found.</p>

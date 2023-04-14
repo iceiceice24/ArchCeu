@@ -75,4 +75,14 @@
     margin: 0; 
   }
   
+.blue-link {
+  color: #000000;
+  text-decoration: none;
+}
+
+.btn-light {
+  color: #ffffff;
+  background-color: #3c00a0;
+  border-color: #3c00a0;
   
+}

@@ -1,0 +1,11 @@
+<nav class="navbar navbar-light", style="background-color: #ffb6c1;">
+  <div class="container">
+    <a class="navbar-brand">CEU</a>
+<%= form_tag(search_folders_path, class: "d-flex", method: "get") do %>
+  <%= text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Search Folder" %>
+  <%= submit_tag "Search", class: "btn btn-outline-success"%>
+<% end %>
+    </form>
+  </div>
+</nav>
+
