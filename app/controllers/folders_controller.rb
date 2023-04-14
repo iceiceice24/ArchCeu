@@ -62,14 +62,12 @@ class FoldersController < ApplicationController
   end
   
   def search
-    query = params[:q]
-    @folder = Folder.where('lower(name) LIKE ?', "%#{query.downcase}%").first
-  
-    if @folder
-      redirect_to @folder
+    if params[:q].blank?
+      redirect_to folders_path and return
     else
-      flash.now[:alert] = "Folder not found."
-      render :index
+      query = params[:q]
+      @results = Folder.all.where('lower(name) LIKE ?', "%#{query.downcase}%")
+      
     end
   end
 
