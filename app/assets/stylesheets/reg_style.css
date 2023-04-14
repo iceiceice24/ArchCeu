@@ -6,9 +6,11 @@
 }
 
 .container{
-    width: 100%;
-    margin: 0;
-    height: 100vh;
+    width: 5000px;
+    margin-left: 75px;
+    margin-right: auto;
+    margin-bottom: auto;
+    height: 5000px;
     background: linear-gradient(to right, rgba(242, 116, 179, 0.8), #803b5d);
     background-position: center;
     background-size: cover;

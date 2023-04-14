@@ -1,59 +1,61 @@
-<h1><%= @folder.name %></h1>
-
-<%= form_tag(search_folders_path, method: "get") do %>
-  <%= text_field_tag :q, params[:q], placeholder: "Search Folders" %>
-  <%= submit_tag "Search" %>
-<% end %>
-
-<% if @subfolders.any? %>
-  <h2>Subfolders</h2>
-  <ul data-controller="sortable">
-    <% @subfolders.each do |subfolder| %>
-      <li><%= link_to subfolder.name, subfolder %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>File name</th>
-      <th> File Type </th>
-      <th> Date Created </th>
-       <th> Action </th>
-
-    </tr>
-  </thead>
-
- <tbody>
- <% if @folder.files.attached? %>
-  <ul data-controller="sortable">
-  <% @folder.files.each do |attachment| %>
-    <tr>
-      <td><%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %></td>
-      <td><%= attachment.content_type%> </td>
-      <td><%= attachment.created_at%> </td>
-      <td><%= button_to "delete", purge_attachment_path(attachment), method: :delete %></td>
-    </tr>
-    <% end %>
-  </ul>
-  <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'Add files', edit_folder_path(@folder) %> 
-<%= button_to 'Delete', folder_path(@folder), method: :delete, data: { confirm: 'Are you sure?' } %> 
-<%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id) %>
-
-</br>
-</br>
-
-<%= form_for @folder do |r| %>
-  <%= render "folders/form", form: r %>
-  <div class="actions">
-    <%= r.submit 'Upload', data: {turbo: false} %>
+<div class="container">
+  <div class="header">
+    <h1 class="title"><%= @folder.name %></h1>
   </div>
-<% end %>
-
-<%= link_to 'Back', 'javascript:history.go(-1);' %>
+  <div class="search-form mt-4">
+    <%= form_tag(search_folders_path, method: "get", class: "form-inline") do %>
+      <%= text_field_tag :q, params[:q], placeholder: "Search Folders", class: "form-control me-2" %>
+      <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+    <% end %>
+  </div>
+  <% if @subfolders.any? %>
+    <div class="subfolders mt-4">
+      <h2>Subfolders</h2>
+      <ul data-controller="sortable" class="list-group">
+        <% @subfolders.each do |subfolder| %>
+          <li class="list-group-item"><%= link_to subfolder.name, subfolder, class: "link-primary" %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="files-table mt-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>File name</th>
+          <th>File Type</th>
+          <th>Date Created</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @folder.files.attached? %>
+          <% @folder.files.each do |attachment| %>
+            <tr>
+              <td><%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %></td>
+              <td><%= attachment.content_type %></td>
+              <td><%= attachment.created_at.strftime("%B %d, %Y") %></td>
+              <td><%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="actions mt-4">
+    <%= link_to 'Add files', edit_folder_path(@folder), class: "btn btn-primary" %> 
+    <%= button_to 'Delete', folder_path(@folder), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %> 
+    <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-success" %>
+  </div>
+  <div class="upload-form mt-4">
+    <%= form_for @folder, html: { multipart: true } do |r| %>
+      <%= render "folders/form", form: r %>
+      <div class="actions">
+        <%= r.submit 'Upload', class: "btn btn-primary", data: { turbo: false } %>
+      </div>
+    <% end %>
+  </div>
+  <div class="back-link mt-4">
+    <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-light" %>
+  </div>
+</div>
