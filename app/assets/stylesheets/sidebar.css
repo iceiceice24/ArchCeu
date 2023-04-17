@@ -1,0 +1,31 @@
+/* sidebar.css */
+
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.nav_list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav_item {
+  margin-bottom: 10px;
+}
+
+.nav_link {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav_link:hover {
+  background-color: #eee;
+}
+

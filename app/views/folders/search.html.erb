@@ -1,3 +1,17 @@
+<h1>Results</h1>
+<div class="card-deck">
+ <ul data-controller="sortable" class="folder-list">
 <% @results.each do  |result|%>
-  <%= link_to result.name, folder_path(result)%>
+<li class="folder-item">
+<a href="<%= folder_path(result) %>" class="card folder-link">
+  <div class="card-body">
+            <div class="folder-name">       
+            </div>
+          </div>
+</a>
+  <%= result.name.truncate(10)%>
+ </li>
 <% end %>
+</ul>
+      </div>
+
