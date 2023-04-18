@@ -24,6 +24,6 @@
 </section>
 
 <section class="container">
-<%= button_to 'Delete User', delete_user_admin_user_path(@user),class:"btn btn-outline-danger", method: :delete,data: {turbo: false} %>
+<%= button_to 'Delete User', delete_user_admin_user_path(@user),class:"btn btn-outline-danger", method: :delete,data: {turbo: false},  data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
 <%= link_to 'Back', root_path %>
 </section>
