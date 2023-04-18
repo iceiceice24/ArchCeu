@@ -25,7 +25,7 @@
 
           <div class="actions mt-4">
            <th> <%= link_to 'Edit folder', edit_folder_path(@folder), type: "button", class: "btn btn-light " %> </th>
-           <th> <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-light ", data: { confirm: 'Are you sure?' } %> </th>
+           <th> <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-light ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> </th>
            <th> <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-light " %> </th>
           </div>
         </tr>
@@ -37,7 +37,7 @@
               <td><%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), class: "blue-link" %></td>
               <td><%= attachment.content_type.split("/").last %></td>
               <td><%= attachment.created_at.strftime("%B %d, %Y") %></td>
-              <td><%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+              <td><%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         <% end %>
@@ -61,4 +61,3 @@
   </div>
 </div>
 </div>
-
