@@ -1,14 +1,15 @@
 class FoldersController < ApplicationController
-  before_action :set_user
+  before_action :authenticate_user!
   before_action :set_folder, only: [:show, :edit, :update, :destroy]
- 
+  before_action :set_user
+
   def index
-    @folders = Folder.roots
+    @folders = current_user.folders.roots
     @folder = Folder.new
   end
 
   def home
-    @folders = Folder.roots
+    @folders = current_user.folders.roots
   end 
 
   def show
@@ -34,7 +35,7 @@ class FoldersController < ApplicationController
   end
 
   def new
-    @folder = Folder.new
+    @folder = current_user.folders.build
     @parent_folder = Folder.find_by(id: params[:parent_folder_id])
   end
 
@@ -42,12 +43,10 @@ class FoldersController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @folder = @user.folders.build(folder_params)
-    @folder.user = current_user
+    @folder = current_user.folders.build(folder_params)
   
     if @folder.parent_folder_id.present?
-      parent_folder = Folder.find_by(id: @folder.parent_folder_id)
+      parent_folder = current_user.folders.find_by(id: @folder.parent_folder_id)
   
       if parent_folder
         @folder.parent_id = parent_folder.id
@@ -84,7 +83,7 @@ class FoldersController < ApplicationController
       redirect_to folders_path and return
     else
       query = params[:q]
-      @results = Folder.all.where('lower(name) LIKE ?', "%#{query.downcase}%")
+      @results = current_user.folders.where('lower(name) LIKE ?', "%#{query.downcase}%")
       
     end
   end
@@ -92,11 +91,11 @@ class FoldersController < ApplicationController
   private
 
     def set_user
-       @user = current_user
+      @user = current_user
     end
 
     def set_folder
-      @folder = Folder.find(params[:id])
+      @folder = current_user.folders.find(params[:id])
     end
 
     def folder_params

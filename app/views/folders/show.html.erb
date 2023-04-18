@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
 <div class="container-fluid-index">
   <div class="header">
@@ -17,7 +16,7 @@
     <div class="subfolders mt-4">
       <h2>Subfolders</h2>
       <ul data-controller="sortable" class="list-group">
-        <% @subfolders.each do |subfolder| %>
+        <% @subfolders.sort_by(&:name).each do |subfolder| %>
           <li class="list-group-item"><%= link_to subfolder.name, subfolder, class: "link-dark " %></li>
         <% end %>
       </ul>
@@ -34,19 +33,19 @@
 
           <div class="actions mt-4">
            <th> <%= link_to 'Edit folder', edit_folder_path(@folder), type: "button", class: "btn btn-light " %> </th>
-           <th> <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-light ", data: { confirm: 'Are you sure?' } %> </th>
+           <th> <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-light ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> </th>
            <th> <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-light " %> </th>
           </div>
         </tr>
       </thead>
       <tbody>
         <% if @folder.files.attached? %>
-          <% @folder.files.each do |attachment| %>
+          <% @folder.files.sort_by { |attachment| attachment.filename.to_s.downcase }.each do |attachment| %>
             <tr>
               <td><%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), class: "blue-link" %></td>
               <td><%= attachment.content_type.split("/").last %></td>
               <td><%= attachment.created_at.strftime("%B %d, %Y") %></td>
-              <td><%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+              <td><%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         <% end %>
@@ -60,6 +59,11 @@
       </div>
     <% end %>
   </div>
+
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
+
   <div class="back-link mt-4">
     <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-light " %>
   </div>
