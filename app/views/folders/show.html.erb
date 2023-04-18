@@ -8,7 +8,7 @@
     <div class="subfolders mt-4">
       <h2>Subfolders</h2>
       <ul data-controller="sortable" class="list-group">
-        <% @subfolders.each do |subfolder| %>
+        <% @subfolders.sort_by(&:name).each do |subfolder| %>
           <li class="list-group-item"><%= link_to subfolder.name, subfolder, class: "link-dark " %></li>
         <% end %>
       </ul>
@@ -32,7 +32,7 @@
       </thead>
       <tbody>
         <% if @folder.files.attached? %>
-          <% @folder.files.each do |attachment| %>
+          <% @folder.files.sort_by { |attachment| attachment.filename.to_s.downcase }.each do |attachment| %>
             <tr>
               <td><%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), class: "blue-link" %></td>
               <td><%= attachment.content_type.split("/").last %></td>
