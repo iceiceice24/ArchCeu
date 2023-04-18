@@ -1,3 +1,4 @@
+<% if current_user %>
 <div class="container-fluid">
 <div class="container-fluid-index">
   <div class="header">
@@ -50,6 +51,11 @@
       </div>
     <% end %>
   </div>
+
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
+
   <div class="back-link mt-4">
     <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-light " %>
   </div>
