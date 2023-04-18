@@ -13,7 +13,24 @@ class FoldersController < ApplicationController
 
   def show
     @subfolders = @folder.subfolders
+    @folderName = @folder.name
+    @parent = @folder.parent_id
     
+    if @parent.present? 
+      flag = true
+      current_id = @parent      
+      @id_arr = Array.new()
+      @id_arr.append(@folder)
+      while flag do
+        result = Folder.find_by(id: current_id)
+          if result.parent_id.present?
+            @id_arr.append(result)           
+            current_id = result.parent_id             
+          else
+            flag = false
+          end
+      end     
+    end
   end
 
   def new
@@ -27,6 +44,7 @@ class FoldersController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @folder = @user.folders.build(folder_params)
+    @folder.user = current_user
   
     if @folder.parent_folder_id.present?
       parent_folder = Folder.find_by(id: @folder.parent_folder_id)

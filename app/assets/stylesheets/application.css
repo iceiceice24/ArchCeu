@@ -86,3 +86,12 @@
   border-color: #3c00a0;
   
 }
+
+.title {
+  display: flex;
+}
+
+.title > .breadcrumb__item {
+  margin-right: 1rem;
+  text-decoration: none;
+}

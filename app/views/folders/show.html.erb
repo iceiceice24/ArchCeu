@@ -1,7 +1,17 @@
+
 <div class="container-fluid">
 <div class="container-fluid-index">
   <div class="header">
-    <h1 class="title"><%= @folder.name %></h1>
+    <%= @folder.name %>
+
+    <h1 class="title">
+    <% if @folder.parent_id.present? %>
+      <% @id_arr.reverse().each do |array|%>
+        <%= link_to array.name, folder_path(array.id) %>>
+      <% end %>
+    <% end %>         
+    </h1>
+
   </div>
   <% if @subfolders.any? %>
     <div class="subfolders mt-4">
@@ -55,4 +65,3 @@
   </div>
 </div>
 </div>
-
