@@ -20,7 +20,7 @@
         <tr>
           <th>File name</th>
           <th>File Type</th>
-          <th>Date Created</th>
+          <th>Date Created <%= link_to '▲', { sort: 'asc' } %><%= link_to '▼', { sort: 'desc' } %></th>
           <th>Action</th>
 
           <div class="actions mt-4">
@@ -32,7 +32,7 @@
       </thead>
       <tbody>
         <% if @folder.files.attached? %>
-          <% @folder.files.sort_by { |attachment| attachment.filename.to_s.downcase }.each do |attachment| %>
+          <% @folderFiles.each do |attachment| %>
             <tr>
               <td><%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment"), class: "blue-link" %></td>
               <td><%= attachment.content_type.split("/").last %></td>
@@ -61,3 +61,4 @@
   </div>
 </div>
 </div>
+

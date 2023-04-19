@@ -1,6 +1,6 @@
 class FoldersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_folder, only: [:show, :edit, :update, :destroy]
+  before_action :set_folder, only: [:docs, :show, :edit, :update, :destroy]
   before_action :set_user
 
   def index
@@ -14,7 +14,8 @@ class FoldersController < ApplicationController
 
   def show
     @subfolders = @folder.subfolders
-    
+    sort_direction = params[:sort] == 'asc' ? :asc : :desc
+    @folderFiles = @folder.files.order(created_at: sort_direction)
   end
 
   def new
@@ -62,12 +63,13 @@ class FoldersController < ApplicationController
   end
   
   def search
+    @subfolders = @folder.subfolders
     if params[:q].blank?
       redirect_to folders_path and return
     else
       query = params[:q]
       @results = current_user.folders.where('lower(name) LIKE ?', "%#{query.downcase}%")
-      
+
     end
   end
 
