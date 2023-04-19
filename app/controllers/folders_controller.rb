@@ -16,6 +16,24 @@ class FoldersController < ApplicationController
     @subfolders = @folder.subfolders
     sort_direction = params[:sort] == 'asc' ? :asc : :desc
     @folderFiles = @folder.files.order(created_at: sort_direction)
+    @folderName = @folder.name
+    @parent = @folder.parent_id
+    
+    if @parent.present? 
+      flag = true
+      current_id = @parent      
+      @id_arr = Array.new()
+      @id_arr.append(@folder)
+      while flag do
+        result = Folder.find_by(id: current_id)
+          if result.parent_id.present?
+            @id_arr.append(result)           
+            current_id = result.parent_id             
+          else
+            flag = false
+          end
+      end     
+    end
   end
 
   def new
