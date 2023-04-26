@@ -81,7 +81,6 @@ class FoldersController < ApplicationController
   end
   
   def search
-    @subfolders = @folder.subfolders
     if params[:q].blank?
       redirect_to folders_path and return
     else
