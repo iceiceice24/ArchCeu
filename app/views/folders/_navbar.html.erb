@@ -1,11 +1,35 @@
-<nav class="navbar navbar-light", style="background-color: #ffb6c1;">
-  <div class="container">
-    <a class="navbar-brand">CEU</a>
-<%= form_tag(search_folders_path, class: "d-flex", method: "get") do %>
-  <%= text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Search Folder" %>
-  <%= submit_tag "Search", class: "btn btn-outline-success"%>
-<% end %>
-    </form>
-  </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header</title>
+    <link rel="stylesheet" href="navbar_style.css" />
+  </head>
 
+  <body>
+    <nav>
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <%= image_tag("logo.png", width: '110', height: '50', class: "d-inline-block align-top", alt: "logo", loading: "lazy") %>
+        </a>
+        <div class="search-bar">
+          <%= form_tag(search_folders_path, class: "search-bar d-flex", method: "get") do %>
+          <i class="uil uil-search"></i>
+          <%= image_tag("search.png", width: '60', height: '40', class: "d-inline-block align-top", alt: "logo", loading: "lazy") %>
+          <%= text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Search Folder" %>
+          <!-- <%= submit_tag "Search", class: "btn btn-outline-success"%> Search button if needed -->
+          <% end %>
+        </div>
+        <div class="dropdown">
+            <%= link_to image_tag("dropdown.png", width: 30, height: 30, alt: "Dropdown Menu"), "#", class: "dropbtn" %>
+          <div class="dropdown-content">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>
