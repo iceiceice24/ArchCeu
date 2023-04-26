@@ -1,12 +1,8 @@
 <% if current_user %>
 <div class="container-fluid">
 <div class="container-fluid-index">
-  <div>
-    <br>
-    <br>
-    <br>
-  </div>
-  <% if @subfolders.any? %>
+
+
     <div class="subfolders mt-4">
       <h2><%= @folder.name %></h2>
       <% if @folder.parent_id.present? %>
@@ -20,7 +16,7 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+
   <div class="files-table mt-4">
     <table class="table table-striped">
       <thead>

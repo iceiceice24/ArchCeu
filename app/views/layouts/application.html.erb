@@ -17,9 +17,13 @@
 
   <body>
     <% if current_user %>
-      <div class="wrapper">
-          <div>
+  
+      <div class="container-auto">
+          <div class="container-auto">
             <%= render 'folders/navbar' %>
+          </div>
+          
+          <div class="container-auto">
             <%= yield %>
           </div>
       </div>
