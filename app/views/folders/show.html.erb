@@ -1,21 +1,19 @@
 <% if current_user %>
 <div class="container-fluid">
 <div class="container-fluid-index">
-  <div class="header">
-    <%= @folder.name %>
-
-    <h1 class="title">
-    <% if @folder.parent_id.present? %>
-      <% @id_arr.reverse().each do |array|%>
-        <%= link_to array.name, folder_path(array.id) %>>
-      <% end %>
-    <% end %>         
-    </h1>
-
+  <div>
+    <br>
+    <br>
+    <br>
   </div>
   <% if @subfolders.any? %>
     <div class="subfolders mt-4">
-      <h2>Subfolders</h2>
+      <h2><%= @folder.name %></h2>
+      <% if @folder.parent_id.present? %>
+        <% @id_arr.reverse().each do |array|%>
+          <%= link_to array.name, folder_path(array.id) %>>
+        <% end %>
+      <% end %>
       <ul data-controller="sortable" class="list-group">
         <% @subfolders.sort_by(&:name).each do |subfolder| %>
           <li class="list-group-item"><%= link_to subfolder.name, subfolder, class: "link-dark " %></li>
