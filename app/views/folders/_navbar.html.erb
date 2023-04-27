@@ -1,7 +1,9 @@
     <nav>
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand">
+        
           <%= image_tag("logo.png", width: '110', height: '50', class: "d-inline-block align-top", alt: "logo", loading: "lazy") %>
+          
         </a>
         <div class="search-bar">
           <%= form_tag(search_folders_path, class: "search-bar d-flex", method: "get") do %>
@@ -14,9 +16,9 @@
         <div class="dropdown">
             <%= link_to image_tag("dropdown.png", width: 30, height: 30, alt: "Dropdown Menu"), "#", class: "dropbtn" %>
           <div class="dropdown-content">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <%= link_to 'Home',  folders_path %>
+            <%= link_to 'Update Profile', edit_user_registration_path %>
+            Contact
           </div>
         </div>
       </div>
