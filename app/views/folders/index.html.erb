@@ -1,12 +1,9 @@
- <head>
-  <link rel="stylesheet" href="viewf_styles.css">
-</head>
  <div class="container-fluid">
  <div class="container-fluid-index">
   
 <% if current_user %>
   <% if @folders %>  
-  <div class="container-auto">
+  <div class="resolution">
     <div class="card-deck">
     <ul data-controller="sortable" class="folder-list"> <!-- Add a custom class for styling -->
       <% @folders.each do |folder| %>

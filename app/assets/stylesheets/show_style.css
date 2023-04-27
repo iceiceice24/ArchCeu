@@ -1,5 +1,5 @@
-/* Styles for the files table */
-.files-table {
+Styles for the files table
+/* .files-table {
     margin-top: 2rem;
   }
   
@@ -36,10 +36,10 @@
   
   .files-table table td button:active {
     opacity: 0.6;
-  }
+  } */
   
   /* Styles for the upload form */
-  .upload-form {
+  /* .upload-form {
     margin-top: 2rem;
   }
   
@@ -63,10 +63,10 @@
   
   .upload-form .actions button[type="submit"]:active {
     opacity: 0.6;
-  }
+  } */
   
   /* Styles for the back/login button */
-  .btn-login {
+  /* .btn-login {
     margin-top: 2rem;
     font-weight: bold;
     font-size: 1rem;
@@ -100,14 +100,14 @@
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
-  }  
+  }   */
   
-  .actions button {
+  /* .actions button {
+    margin-right: 0.5rem;
+  } */
+  
+  /* .actions .btn-light {
     margin-right: 0.5rem;
   }
-  
-  .actions .btn-light {
-    margin-right: 0.5rem;
-  }
-  
+   */
   

@@ -12,12 +12,13 @@
   <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="navbar_style.css" />
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <link rel="stylesheet" href="show_style.css">
+
   <%= javascript_importmap_tags %>
 </head>
 
   <body>
     <% if current_user %>
-  
       <div class="container-auto">
           <div class="container-auto">
             <%= render 'folders/navbar' %>

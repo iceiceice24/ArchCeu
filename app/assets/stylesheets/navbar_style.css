@@ -31,8 +31,9 @@
   .search-bar {
     background-color: white;
     border-radius: 2rem;
-    padding: 0.6rem 1rem;
-    margin-right: 1rem;
+    padding: 0.3rem 1rem;
+    margin-left: auto;
+    order: 1;
   }
 
   .search-bar img {

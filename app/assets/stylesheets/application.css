@@ -96,12 +96,17 @@
   text-decoration: none;
 }
 
-.resolutiion {
+.resolution {
   overflow: auto;
   overflow-x: hidden;
   overflow-y: hidden;
+  padding-top: 40px;
 }
 
-body {
+/* body {
   padding-top: 50px;
+} */
+
+.mt-4 {
+    margin-top: 0.5rem!important;
 }
