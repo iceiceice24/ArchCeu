@@ -1,0 +1,60 @@
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container-fluid-index {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  ul.folder-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li.folder-item {
+    margin: 10px;
+  }
+  
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    width: 250px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .folder-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .folder-link {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  p {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  

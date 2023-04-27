@@ -1,29 +1,35 @@
-<section class="container">
-<h1>Edit User</h1>
-</section>
+<section class="edit-page">
+  <div class="edit-box">
+    <h2>Edit User</h2>
+    <%= form_for [:admin, @user] do |f| %>
+      <div class="field">
+        <%= f.email_field :email, placeholder: "Email" %>
+      </div>
 
-<section class="container">
-<%= form_for [:admin, @user] do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+      <% if current_user.admin? %>
+        <div class="field">
+          <%= f.label :role, "Role:", class: 'form-label' %>
+          <%= f.select :role, options_for_select([['Choose...', nil], ['User', 'user'], ['Moderator', 'moderator'], ['Admin', 'admin']]), { include_blank: true }, { class: 'form-select' } %>
+        </div>
+      <% end %>
 
-  <% if current_user.admin? %>
-    <%= f.label :role %>
-    <%= f.select :role, options_for_select([['Choose...', nil], ['User', 'user'], ['Moderator', 'moderator'], ['Admin', 'admin']]), class: 'form-select' %>
-  <% end %>
+      <div class="field">
+        <%= f.password_field :password, placeholder: "Password" %>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <div class="field">
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+      </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  </br>
-  <%= f.submit 'Update User', data: {turbo: false} %>
+      <div class="actions">
+        <%= f.submit 'Update User', class: 'update-button', data: { turbo: false } %>
+      </div>
+    <% end %>
 
-<% end %>
-</section>
-
-<section class="container">
-<%= button_to 'Delete User', delete_user_admin_user_path(@user),class:"btn btn-outline-danger", method: :delete,data: {turbo: false},  data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
-<%= link_to 'Back', root_path %>
+    <div class="delete-action">
+      <%= button_to 'Delete User', delete_user_admin_user_path(@user), class: "cancel-button", method: :delete, data: { turbo: false }, data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
+    </div>
+    
+    <%= link_to 'Back', root_path %>
+  </div>
 </section>

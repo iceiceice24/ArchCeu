@@ -5,14 +5,17 @@
     box-sizing: border-box;
 }
 
-.edit-page {
+.forgot-password-page {
+    background: linear-gradient(to right, rgba(242, 116, 179, 0.8), #803b5d);;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.edit-box{
+.forgot-password-box{
     width: 90%;
     max-width: 450px;
     background: #ffffff;
@@ -21,14 +24,14 @@
 }
 
 
-.edit-box h2{
+.forgot-password-box h2{
     font-size: 30px;
     margin-bottom: 60px;
     color: #3c00a0;
     position: relative;
 }
 
-.edit-box h2::after{
+.forgot-password-box h2::after{
     content:'';
     width: 30px;
     height: 4px;
@@ -49,7 +52,7 @@
     overflow: hidden;
 }
 
-input[type="email"], input[type="password"]{
+input[type="email"]{
     width: 100%;
     background: #eaeaea;
     border: 0;
@@ -69,9 +72,9 @@ label{
     align-items: center;
     margin-top: 15px;
     text-align: center;
-}
-
-input[type="submit"] {
+  }
+  
+  input[type="submit"] {
     background: #3c00a0;
     color: #fff;
     height: 40px;
@@ -80,10 +83,9 @@ input[type="submit"] {
     outline: 0;
     cursor: pointer;
     transition: background 1s;
-    width: 100%;
-    max-width: 400px;
-}
 
+  }
+  
 
 input[type="submit"]:hover{
     background: #803b5d;
@@ -91,33 +93,6 @@ input[type="submit"]:hover{
 
 .field:last-of-type{
     margin-top: 30px;
-}
-
-.field-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}  
-  
-.checkbox-wrapper {
-    float: right;
-}
-  
-  
-.field-group > label {
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-}
-  
-.field-group input[type="checkbox"] {
-    float: right;
-}
-  
-.edit-page {
-    background: linear-gradient(to right, rgba(242, 116, 179, 0.8), #803b5d);;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .actions a {
@@ -138,25 +113,3 @@ input[type="submit"]:hover{
 .actions a:hover {
     background: #803b5d;
 }
-
-.cancel-button {
-    width: 20rem;
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: rgb(137, 30, 30);
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .cancel-button:hover {
-    background-color: rgb(85, 17, 17);
-  }
-
-  .delete-action {
-    margin-top: 15px;
-  }

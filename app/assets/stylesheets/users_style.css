@@ -1,0 +1,44 @@
+/* Set table styles */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Set table header styles */
+  .table thead th {
+    background-color: #ffb6c1;
+    border: 1px solid #ffb6c1;
+    border-radius: 0px;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.7rem;
+    text-align: left;
+  }
+  
+  
+  /* Set table cell styles */
+  .table tbody td {
+    border: 1px solid #dee2e6;
+    padding: 0.5rem;
+  }
+
+  .table tbody tr {
+    margin-bottom: 0.5rem;
+  }  
+
+  .table tbody tr:hover {
+    background-color: #dedddd;
+  }  
+  
+  /* Set link styles */
+  a {
+    color: #ffb6c1;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
