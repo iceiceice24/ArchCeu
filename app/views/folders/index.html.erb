@@ -1,18 +1,12 @@
- <div class="container-fluid">
- <div class="container-fluid-index">
-  
 <% if current_user %>
   <% if @folders %>  
-  <div class="resolution">
     <div class="card-deck">
     <ul data-controller="sortable" class="folder-list"> <!-- Add a custom class for styling -->
       <% @folders.each do |folder| %>
       <li class="folder-item"> <!-- Add a custom class for styling -->
         <a href="<%= folder_path(folder) %>" class="card folder-link">
           <div class="card-body">
-          
-            <div class="folder-name">
-              
+            <div class="folder-name">              
             </div>
             <!-- Additional folder details or actions can be added here -->
           </div>
@@ -21,7 +15,8 @@
       </li>
       <% end %>
     </ul>
-      </div>  
+    </div>  
+
   <%= link_to 'New Folder', new_user_folder_path(@user) %>
   <% else %>
     <p>No folders found.</p>
@@ -30,8 +25,4 @@
   <%= link_to "Login", new_user_session_path %>
 <% end %>
 
-  </div>
 <%= link_to 'Back', 'javascript:history.go(-1);' %>
-
-</div>
-</div>

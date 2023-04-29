@@ -18,19 +18,15 @@
 </head>
 
   <body>
+    <div class='nav'>
     <% if current_user %>
-      <div class="container-auto">
-          <div class="container-auto">
-            <%= render 'folders/navbar' %>
-          </div>
-          
-          <div class="container-auto">
-            <%= yield %>
-          </div>
-      </div>
-    <% else %>
-      <%= yield %>
+      <%= render 'folders/navbar' %>          
     <% end %>
+    </div>
 
+    <div class="container-yield">
+          <%= yield %>
+    </div>
+    
   </body>
 </html>
