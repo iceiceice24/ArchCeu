@@ -84,8 +84,15 @@
 
 .btn-light {
   color: #ffffff;
-  background-color: #ff6b6b;
-  border-color: #ff6b6b;
+  background-color: #ffb6c1;
+  border-color: #ffb6c1;
+  
+}
+
+.btn-red {
+  color: #ffffff;
+  background-color: #942838;
+  border-color: #942838;
   
 }
 

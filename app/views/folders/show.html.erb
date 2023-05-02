@@ -10,7 +10,7 @@
 
   <ul data-controller="sortable" class="list-group">
     <% @subfolders.sort_by(&:name).each do |subfolder| %>
-     <li class="list-group-item"><%= link_to subfolder.name, subfolder, class: "link-dark " %></li>
+     <li class="list-group-item"> 📁 <%= link_to subfolder.name, subfolder, class: "link-dark " %></li>
     <% end %>
   </ul>
 
@@ -59,7 +59,7 @@
   <%= link_to 'Edit folder', edit_folder_path(@folder), type: "button", class: "btn btn-light " %> 
 </div>
 <div class="vertical-delete">
-  <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-light ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> 
+  <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-red ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> 
 </div>
 <div class="vertical-add">
   <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-light " %> 
