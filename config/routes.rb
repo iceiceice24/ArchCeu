@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  get 'folders/:id/file', to: 'folders#file', as: 'file'
+
   devise_for :users, controllers:{
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -21,7 +22,4 @@ Rails.application.routes.draw do
     delete 'delete_user', on: :member
   end
   end
-
-
-
 end

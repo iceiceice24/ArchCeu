@@ -12,6 +12,10 @@ class FoldersController < ApplicationController
     @folders = current_user.folders.roots
   end 
 
+  def file
+    @attachment = ActiveStorage::Attachment.find(params[:id])
+  end  
+
   def show
     @subfolders = @folder.subfolders
     sort_direction = params[:sort] == 'asc' ? :asc : :desc
