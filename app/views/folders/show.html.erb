@@ -1,7 +1,7 @@
 <% if current_user %>
   <% if @folder.parent_id.present? %>
     <% @id_arr.reverse().each do |array|%>
-      <%= link_to array.name, folder_path(array.id) %>>
+      <%= link_to array.name, folder_path(array.id), class: "font-bread" %> ➤
     <% end %>
 
   <% else %>
@@ -33,10 +33,8 @@
           <td><%= link_to attachment.filename, file_path(attachment) %><td>
           <td><%= attachment.content_type.split("/").last %></td>
           <td><%= attachment.created_at.strftime("%B %d, %Y") %></td>
-          <td><%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
-          <%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
-          <%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
-          </td>
+          <td><%= button_to "⇓ X ", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %></td>
+          
         </tr>
       <% end %>
     <% end %>
@@ -54,8 +52,15 @@
   <%= link_to "Login", new_user_session_path %>
 <% end %>
 
+<div class="vertical-back">
   <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-light " %>
-
+  </div>
+<div class="vertical-edit">
   <%= link_to 'Edit folder', edit_folder_path(@folder), type: "button", class: "btn btn-light " %> 
+</div>
+<div class="vertical-delete">
   <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-light ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> 
+</div>
+<div class="vertical-add">
   <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-light " %> 
+</div>
