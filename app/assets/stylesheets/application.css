@@ -16,8 +16,8 @@
  /* Card styles */
 
  .card {
+  border: none;
    border-radius: 10px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    margin-bottom: 10px;
    width: 70%; /* Set a width for each card to fit two cards in a row */
    display: inline-block; /* Display cards in inline-block mode */
@@ -28,6 +28,7 @@
  }
 
 .card-body {
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +37,7 @@
 }
 
 .card-icon {
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,14 +78,14 @@
   }
   
 .blue-link {
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
 }
 
 .btn-light {
   color: #ffffff;
-  background-color: #3c00a0;
-  border-color: #3c00a0;
+  background-color: #ff6b6b;
+  border-color: #ff6b6b;
   
 }
 
@@ -102,4 +104,19 @@
 
 .mt-4 {
     margin-top: 0.5rem!important;
+}
+
+
+/* breadcrumbs */
+.font-bread{
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333;
+    margin-left: 10px;
+
+}
+.font-bread:hover {
+  color: #ff6b6b;
 }
