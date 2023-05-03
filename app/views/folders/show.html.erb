@@ -1,11 +1,10 @@
 <% if current_user %>
+  <%= link_to @first_parent_id.name, folder_path(@first_parent_id), class: "font-bread"%>
   <% if @folder.parent_id.present? %>
     <% @id_arr.reverse().each do |array|%>
-      <%= link_to array.name, folder_path(array.id), class: "font-bread" %> ➤
+    
+      ➤<%= link_to array.name, folder_path(array.id), class: "font-bread" %> ➤
     <% end %>
-
-  <% else %>
-    <%= @folder.name %>
   <% end %>
 
   <ul data-controller="sortable" class="list-group">
@@ -30,11 +29,11 @@
      <% if @folder.files.attached? %>
       <% @folderFiles.each do |attachment| %>
         <tr>
-          <td><%= link_to attachment.filename, file_path(attachment) %><td>
-          <td><%= attachment.content_type.split("/").last %></td>
+          <td><%= link_to attachment.filename, file_path(attachment) %></ td>
+          <td><%= attachment.content_type.split("/").last %></td>              
           <td><%= attachment.created_at.strftime("%B %d, %Y") %></td>
           <td><%= button_to "⇓ X ", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %></td>
-          
+       
         </tr>
       <% end %>
     <% end %>
@@ -64,3 +63,6 @@
 <div class="vertical-add">
   <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-light " %> 
 </div>
+
+
+      
