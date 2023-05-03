@@ -1,9 +1,9 @@
 <% if current_user %>
-  <%= link_to @first_parent_id.name, folder_path(@first_parent_id), class: "font-bread"%>
+  <%= link_to @first_parent_id.name, folder_path(@first_parent_id), class: "font-bread"%>➤
   <% if @folder.parent_id.present? %>
     <% @id_arr.reverse().each do |array|%>
     
-      ➤<%= link_to array.name, folder_path(array.id), class: "font-bread" %> ➤
+      <%= link_to array.name, folder_path(array.id), class: "font-bread" %> ➤
     <% end %>
   <% end %>
 
