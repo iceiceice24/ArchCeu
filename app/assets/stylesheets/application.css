@@ -125,11 +125,6 @@
 
 }
 .font-bread:hover {
-  color: #ff6b6b;
+  color: #fd0000;
 }
 
-/* Preview */
-.preview {
-  width: 10000px;
-  height: 100px;
-}

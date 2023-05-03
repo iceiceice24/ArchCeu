@@ -34,9 +34,12 @@ class FoldersController < ApplicationController
             @id_arr.append(result)           
             current_id = result.parent_id             
           else
+            @first_parent_id = result
             flag = false
           end
-      end     
+      end       
+    else      
+      @first_parent_id = @folder
     end
   end
 
