@@ -20,9 +20,11 @@
   <body>
     <div class='nav'>
     <% if current_user %>
-      <%= render 'folders/navbar' %>          
+      <%= render 'folders/navbar' %>     
+    <% else %> 
+      <%= render 'folders/navbarHome' %> 
     <% end %>
-    </div>
+  </div>
 
     <div class="container-yield">
           <%= yield %>

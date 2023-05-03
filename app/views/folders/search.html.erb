@@ -1,19 +1,18 @@
-<h1>Results</h1>
+<h1>Results:</h1>
+
 <div class="card-deck">
- <ul data-controller="sortable" class="folder-list">
-<% @results.each do  |result|%>
-<li class="folder-item">
-<a href="<%= folder_path(result) %>" class="card folder-link">
-  <div class="card-body">
-            <div class="folder-name">       
+  <ul data-controller="sortable" class="folder-list">
+    <% @results.each do |result| %>
+      <li class="folder-item">
+        <a href="<%= folder_path(result) %>" class="card folder-link">
+          <div class="card-body">
+            <div class="folder-name">
+              <%= image_tag("folder.jpg", width: '90', height: '100') %>
             </div>
+            <%= result.name.truncate(10) %>
           </div>
-</a>
-  <%= result.name.truncate(10)%>
- </li>
-
-
-<% end %>
-</ul>
-      </div>
-
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>

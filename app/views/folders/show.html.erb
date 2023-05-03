@@ -30,11 +30,10 @@
      <% if @folder.files.attached? %>
       <% @folderFiles.each do |attachment| %>
         <tr>
-          <td><%= link_to attachment.filename, file_path(attachment) %><td>
+          <td><%= link_to attachment.filename, file_path(attachment) %></td>
           <td><%= attachment.content_type.split("/").last %></td>
           <td><%= attachment.created_at.strftime("%B %d, %Y") %></td>
-          <td><%= button_to "⇓ X ", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %></td>
-          
+          <td><%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     <% end %>

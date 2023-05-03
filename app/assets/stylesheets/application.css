@@ -127,3 +127,9 @@
 .font-bread:hover {
   color: #ff6b6b;
 }
+
+/* Preview */
+.preview {
+  width: 10000px;
+  height: 100px;
+}
