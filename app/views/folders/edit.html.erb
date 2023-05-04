@@ -2,7 +2,7 @@
   <h1>Edit Folder</h1>
 
   <% if @folder.parent_folder_id.present? %>
-    <p>Parent folder: <%= @folder.parent_folder.name %></p>
+    <p>Folder Name: <%= @folder.parent_folder.name %></p>
   <% end %>
 
   <%= form_with(model: @folder, local: true) do |f| %>

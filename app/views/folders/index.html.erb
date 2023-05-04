@@ -16,13 +16,15 @@
       <% end %>
     </ul>
     </div>  
-
-  <%= link_to 'New Folder', new_user_folder_path(@user) %>
+<div class="vertical-add">
+  <%= link_to 'New Folder', new_user_folder_path(@user), type: "button", class: "btn btn-button " %>
+</div>
   <% else %>
     <p>No folders found.</p>
   <% end %>
 <% else %>
   <%= link_to "Login", new_user_session_path %>
 <% end %>
-
-<%= link_to 'Back', 'javascript:history.go(-1);' %>
+<div class="vertical-edit">
+<%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button " %>
+</div>

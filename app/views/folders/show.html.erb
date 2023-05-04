@@ -43,7 +43,7 @@
     <%= form_for @folder, html: { multipart: true } do |r| %>
       <%= render "folders/form", form: r %>
         <div class="actions">
-          <%= r.submit 'Upload', class: "btn btn-light ", data: { turbo: false } %>
+          <%= r.submit 'Upload', class: "btn btn-red", data: { turbo: false } %>
         </div>
     <% end %>
 
@@ -52,16 +52,16 @@
 <% end %>
 
 <div class="vertical-back">
-  <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-light " %>
+  <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>
   </div>
 <div class="vertical-edit">
-  <%= link_to 'Edit folder', edit_folder_path(@folder), type: "button", class: "btn btn-light " %> 
+  <%= link_to 'Edit folder', edit_folder_path(@folder), type: "button", class: "btn btn-button " %> 
 </div>
 <div class="vertical-delete">
   <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-red ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> 
 </div>
 <div class="vertical-add">
-  <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-light " %> 
+  <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-button " %> 
 </div>
 
 
