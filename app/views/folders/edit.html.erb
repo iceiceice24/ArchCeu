@@ -1,22 +1,37 @@
-<div class="container">
-  <h1>Edit Folder</h1>
+<div class="containerOne">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h1 class="text-center mb-4 color">Edit Folder</h1>
 
-  <% if @folder.parent_folder_id.present? %>
-    <p>Folder Name: <%= @folder.parent_folder.name %></p>
-  <% end %>
+      <%= form_with(model: @folder, local: true) do |form| %>
+        <% if @folder.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+            <ul>
+              <% @folder.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <%= form_with(model: @folder, local: true) do |f| %>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control" %>
+        <div class="form-group mb-4">
+          <%= form.label :Rename, class: "form-label" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Folder Name" %>
+        </div>
+
+        <%= render "folders/form", form: form %>
+
+        <div class="form-group mb-4">
+          <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
+          <%= form.hidden_field :user_id, value: current_user.id %>  
+        </div>
+
+        <div class="form-group ">
+          <%= form.submit 'Edit Folder', data: {turbo: false}, class: "btn btn-button" %>
+          <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>
+        </div>
+      <% end %>
     </div>
-
-    <%= render "folders/form", form: f %>
-
-    <div class="form-group">
-      <%= f.submit 'Update', data: {turbo: false}, class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-  <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-secondary" %>
+  </div>
 </div>

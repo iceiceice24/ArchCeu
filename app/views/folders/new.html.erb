@@ -1,7 +1,7 @@
 <div class="containerOne">
   <div class="row justify-content-center">
     <div class="col-md-10">
-      <h1 class="text-center mb-4">New Folder</h1>
+      <h1 class="text-center mb-4 color">New Folder</h1>
 
       <%= form_with(model: [@user, @folder], url: user_folders_path(user_id: @user.id)) do |form| %>
         <% if @folder.errors.any? %>
@@ -15,21 +15,21 @@
           </div>
         <% end %>
 
-        <div class="form-group">
+        <div class="form-group mb-4">
           <%= form.label :name, class: "form-label" %>
           <%= form.text_field :name, class: "form-control", placeholder: "Folder Name" %>
         </div>
 
         <%= render "folders/form", form: form %>
 
-        <div class="form-group">
+        <div class="form-group mb-4">
           <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
           <%= form.hidden_field :user_id, value: current_user.id %>  
         </div>
 
-        <div class="form-group">
-          <%= form.submit 'Create Folder', data: {turbo: false}, class: "btn btn-move" %>
-          <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-outline-secondary" %>
+        <div class="form-group ">
+          <%= form.submit 'Create Folder', data: {turbo: false}, class: "btn btn-button" %>
+          <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>
         </div>
       <% end %>
     </div>

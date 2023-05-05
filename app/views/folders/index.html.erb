@@ -1,9 +1,9 @@
 <% if current_user %>
   <% if @folders %>  
     <div class="card-deck">
-    <ul data-controller="sortable" class="folder-list"> <!-- Add a custom class for styling -->
+    <ul data-controller="sortable" class="folder-list"> 
       <% @folders.each do |folder| %>
-      <li class="folder-item"> <!-- Add a custom class for styling -->
+      <li class="folder-item"> 
         <a href="<%= folder_path(folder) %>" class="card folder-link">
           <div class="card-body">
             <div class="folder-name">              
@@ -11,20 +11,28 @@
             <%= image_tag("folder.jpg", width: '90', height: '200') %>
           </div>
         </a>
-        <%= folder.name.truncate(10) %>
+      <div class="folderMove">
+        <%= folder.name.truncate(10)%>
+      </div>
       </li>
       <% end %>
     </ul>
     </div>  
-<div class="vertical-add">
-  <%= link_to 'New Folder', new_user_folder_path(@user), type: "button", class: "btn btn-button " %>
-</div>
+    <table>
+    <tr>
+  <div class="vertical-add">
+  <th><%= link_to 'New Folder', new_user_folder_path(@user), type: "button", class: "btn btn-button moving " %></th>
+  </div>
   <% else %>
     <p>No folders found.</p>
   <% end %>
+  <div class="vertical-edit">
+  <th><%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button moving " %></th>
+  </div>
+</tr>
+</table>
 <% else %>
+
+
   <%= link_to "Login", new_user_session_path %>
 <% end %>
-<div class="vertical-edit">
-<%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button " %>
-</div>

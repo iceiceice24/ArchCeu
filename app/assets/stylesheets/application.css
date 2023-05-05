@@ -350,3 +350,20 @@ p {
   position: absolute;
   right:18%;
 }
+
+.color{
+  color: #2C2A6B;
+}
+
+.folderMove{
+  margin-left: 35px;
+}
+
+.moving{
+  margin-left: 35px;
+}
+
+.show-page{
+  margin-left: 48%;
+  margin-top: 10px;
+}

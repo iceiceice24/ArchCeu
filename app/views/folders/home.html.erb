@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid bg-page login-page">
   <div class="form-box">
-    <h1 id="title">CEU ARCH</h1>
+    <h1 class= "text-center color mb-4" >CEU ARCH</h1>
     <form>
       <div class="logo-contain">
         <%= image_tag 'logo.png', style: 'height: 150px; width: 330px; vertical-align: top;' %>
@@ -8,16 +8,12 @@
       
         <% if current_user %>
             <% if current_user.admin? %>
-            <div class="All-Users">
-            <%= link_to "All Users",  admin_users_path, class: "btn btn-button" %> 
-            </div>
+            <div>
+            <%= link_to "All Users",  admin_users_path, class: "btn btn-light homie" %> 
             <% end %>            
-            <div class="View-Folders">
-            <%= link_to 'View Folders', user_folders_path(@user), class: "btn btn-button"  %> 
-            </div>
-            <div class="Log-Out"> 
-            <%= link_to 'Log out', destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-button"  %>
-            </div>
+            <%= link_to 'View Folders', user_folders_path(@user), class: "btn btn-light homie2"  %> 
+            <%= link_to 'Log out', destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-light homie3"  %>
+          </div>
         <% else %>
           <%= link_to "Login", new_user_session_path %>
           <%= link_to "Create Account", new_user_registration_path %>
