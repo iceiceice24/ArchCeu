@@ -1,0 +1,38 @@
+.bg-page{
+    background-color: #ffb6c1;
+}
+
+.login-page{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 2px 16px;
+    height: 500px;
+    width: 500px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-group-email {
+    width: 100%;
+    margin-right: 100px;
+}
+
+.form-group-password{
+    width: 100%;
+    margin-right: 100px;
+}
+
+.signup{
+margin-left: 50px;
+}
+
+.login{
+    margin-left: 100px;
+    margin-right: 50px;
+}
+
+.google{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+

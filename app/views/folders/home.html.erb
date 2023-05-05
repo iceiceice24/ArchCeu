@@ -5,19 +5,25 @@
       <div class="logo-contain">
         <%= image_tag 'logo.png', style: 'height: 150px; width: 330px; vertical-align: top;' %>
       </div>
-      <div class="btn-field">
+      
         <% if current_user %>
             <% if current_user.admin? %>
-              <!-- <%= User.count %> -->
-            <%= link_to "All Users",  admin_users_path %> 
+            <div class="All-Users">
+            <%= link_to "All Users",  admin_users_path, class: "btn btn-button" %> 
+            </div>
             <% end %>            
-            <%= link_to 'View Folders', user_folders_path(@user) %>  
-            <%= link_to 'Log out', destroy_user_session_path, 'data-turbo-method': :delete %>
+            <div class="View-Folders">
+            <%= link_to 'View Folders', user_folders_path(@user), class: "btn btn-button"  %> 
+            </div>
+            <div class="Log-Out"> 
+            <%= link_to 'Log out', destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-button"  %>
+            </div>
         <% else %>
           <%= link_to "Login", new_user_session_path %>
           <%= link_to "Create Account", new_user_registration_path %>
         <% end %>
-      </div>
+
+
     </form>
   </div>
 </div>

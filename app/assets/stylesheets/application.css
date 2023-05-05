@@ -13,18 +13,25 @@
  *= require_tree .
  *= require_self
  */
- /* Card styles */
+
+/* Overall font */
+*{
+  font-family: 'Libre Baskerville', serif;
+  box-sizing: border-box;
+}
+
+
+/* Card styles */
 
  .card {
-  border: none;
-   border-radius: 10px;
+   border: none;
    margin-bottom: 10px;
-   width: 70%; /* Set a width for each card to fit two cards in a row */
-   display: inline-block; /* Display cards in inline-block mode */
    margin-right: 20px;
    margin-top: 20px;
-   margin-left: 20px; /* Add some margin between cards */
-   vertical-align: top; /* Align cards to the top of the row */
+   margin-left: 20px; 
+   vertical-align: top; 
+   width: 70%; 
+   display: inline-block; 
  }
 
 .card-body {
@@ -49,6 +56,7 @@
 }
 
 .card-icon img {
+  border: none;
   width: 40px;
   height: 40px;
 }
@@ -128,3 +136,217 @@
   color: #fd0000;
 }
 
+/* navbar_style */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffb6c1;
+  padding: 10px 0;
+  z-index: 1;
+}
+
+.search-bar {
+  background-color: white;
+  border-radius: 2rem;
+  padding: 0.3rem 1rem;
+  margin-left: auto;
+  
+  order: 1;
+}
+
+.search-bar img {
+  margin-right: 30px;
+}  
+
+.search-bar input[type="search"] {
+  background: transparent;
+  width: 30vw;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: white;
+  text-align: right;
+}
+
+.search-bar input[type="search"]::placeholder {
+  font-size: 17px; 
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Libre Baskerville', serif;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 0 10px;
+}
+
+.container > *:first-child {
+  font-size: 2rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #ffb6c1;
+  color: #ffb6c1;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 2rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #ffb6c1;
+  padding: 12px 16px;
+  right: 0;
+  min-width: 160px;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: lightgray;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}  
+
+
+/* User style */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.table thead th {
+  background-color: #ffb6c1;
+  border: 1px solid #ffb6c1;
+  border-radius: 0px;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.7rem;
+  text-align: left;
+}
+
+
+.table tbody td {
+  border: 1px solid #dee2e6;
+  padding: 0.5rem;
+}
+
+.table tbody tr {
+  margin-bottom: 0.5rem;
+}  
+
+.table tbody tr:hover {
+  background-color: #dedddd;
+}  
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* viewf_styles css */
+
+.container-fluid-kyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container-fluid-index {
+  max-width: 1000px;
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+ul.folder-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.folder-item {
+  margin: 10px;
+}
+
+.card-deck {
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  border: none;
+  width: 250px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.folder-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.folder-link {
+  border: none;
+  text-decoration: none;
+  color: #333;
+}
+p {
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* home.html.erb */
+.All-Users{
+  margin-top: 2.5%;
+  position: absolute;
+  left:15%;
+}
+
+.View-Folders{
+  margin-top: 2.5%;
+  position: absolute;
+  right:38%;
+}
+
+.Log-Out{
+  margin-top: 2.5%;
+  position: absolute;
+  right:18%;
+}

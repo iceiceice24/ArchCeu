@@ -1,36 +1,37 @@
-<div class="container ">
-  <h1>New Folder</h1>
+<div class="containerOne">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h1 class="text-center mb-4">New Folder</h1>
 
-  <%= form_with(model: [@user, @folder], url: user_folders_path(user_id: @user.id)) do |form| %>
+      <%= form_with(model: [@user, @folder], url: user_folders_path(user_id: @user.id)) do |form| %>
+        <% if @folder.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+            <ul>
+              <% @folder.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-    <% if @folder.errors.any? %>
-      <div id="error_explanation" class="alert alert-danger">
-        <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+        <div class="form-group">
+          <%= form.label :name, class: "form-label" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Folder Name" %>
+        </div>
 
-        <ul>
-          <% @folder.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+        <%= render "folders/form", form: form %>
 
-    <div class="form-group">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control" %>
+        <div class="form-group">
+          <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
+          <%= form.hidden_field :user_id, value: current_user.id %>  
+        </div>
+
+        <div class="form-group">
+          <%= form.submit 'Create Folder', data: {turbo: false}, class: "btn btn-move" %>
+          <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-outline-secondary" %>
+        </div>
+      <% end %>
     </div>
-
-    <%= render "folders/form", form: form %>
-
-    <div class="form-group">
-      <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
-      <%= form.hidden_field :user_id, value: current_user.id %>  
-    </div>
-
-    <div class="form-group">
-      <%= form.submit 'Create Folder', data: {turbo: false}, class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-  <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-secondary" %>
+  </div>
 </div>

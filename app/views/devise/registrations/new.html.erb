@@ -1,38 +1,33 @@
-  <div class="signup-page">
-    <div class="signup-box">
-      <h2>Sign up</h2>
+<div class="signup-page bg-page">
+<div class="row justify-content-center">
+  <div class="signup-box ">
+    <h2 class="text-center mb-4 mt-4">Sign up</h2>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", placeholder: "Email" %>
-        </div>
+      <div class="form-group-email mb-4 mt-4">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+      </div>
 
-        <div class="field">
-          <% if @minimum_password_length %>
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-input", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
-          <% else %>
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-input", placeholder: "Password" %>
-          <% end %>
-        </div>  
-
-        <div class="field">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input", placeholder: "Confirm Password" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Sign up", data: { turbo: false }, class: "btn" %>
-        </div>
+      <div class="form-group-password mb-4 mt-4">
+        <% if @minimum_password_length %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
+        <% else %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
         <% end %>
+      </div>  
 
-        <div class="actions">
-          <%= link_to "Log in", new_session_path(resource_name) %>
-        </div>
-        <div>
-          <%= link_to 'Back', 'javascript:history.go(-1);' %>
-          <%= render "devise/shared/links" %>
-        </div>
-    </div>
+      <div class="form-group-password mb-4 mt-4">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control ", placeholder: "Confirm Password" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Sign up", data: { turbo: false }, class: "btn btn-light btn-block SignUpNew" %>
+        <% end %>
+           <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-light backNew" %>
+        <%= render "devise/shared/links" %>
+
+      </div>
   </div>
-
+</div>
