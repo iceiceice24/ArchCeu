@@ -31,11 +31,11 @@
                 <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-button " %> 
                </div>
                <div class="vertical-edit">
-                <%= link_to 'Edit folder', edit_folder_path(@folder), type: "button", class: "btn btn-button " %> 
-                 </div>
+                <%= link_to 'Add files/Edit Folder', edit_folder_path(@folder), type: "button", class: "btn btn-button " %> 
+                </div>
                <div class="vertical-delete">
                 <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-button ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> 
-                 </div>
+                </div>
                 <div class="vertical-back">
                  <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>
                 </div>
