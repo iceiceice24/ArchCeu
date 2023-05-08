@@ -142,7 +142,7 @@ function createDropZone(controller) {
     headers: controller.headers,
     maxFiles: controller.maxFiles,
     maxFilesize: controller.maxFileSize,
-    acceptedFiles: 'application/pdf',
+    acceptedFiles: controller.acceptedFiles,
     addRemoveLinks: controller.addRemoveLinks,
     uploadMultiple: controller.uploadMultiple,
     autoQueue: false,
