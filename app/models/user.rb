@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :folders
+  validates :email, presence: true, format: { with: /\A[\w+\-.]+@ceu\.edu\.ph\z/i }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :database_authenticatable, :registerable,
