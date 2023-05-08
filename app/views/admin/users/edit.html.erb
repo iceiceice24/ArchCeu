@@ -1,35 +1,35 @@
-<section class="edit-page">
+<div class="container-fluid edit-page bg-page">
+ <div class="row justify-content-center">
   <div class="edit-box">
-    <h2>Edit User</h2>
+    <h2 class="text-center mb-4 mt-4 color">Edit User</h2>
+
     <%= form_for [:admin, @user] do |f| %>
-      <div class="field">
-        <%= f.email_field :email, placeholder: "Email" %>
+      <div class="form-group-email mb-4 mt-4 ">
+        <%= f.email_field :email, placeholder: "Email", class: "form-control" %>
       </div>
 
       <% if current_user.admin? %>
-        <div class="field">
+        <div class="form-group-password mb-4 mt-4 ">
           <%= f.label :role, "Role:", class: 'form-label' %>
           <%= f.select :role, options_for_select([['Choose...', nil], ['User', 'user'], ['Moderator', 'moderator'], ['Admin', 'admin']]), { include_blank: true }, { class: 'form-select' } %>
         </div>
       <% end %>
 
-      <div class="field">
-        <%= f.password_field :password, placeholder: "Password" %>
+      <div class="form-group-password mb-4 mt-4">
+        <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
       </div>
 
-      <div class="field">
-        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
+      <div class="form-group-password mb-4 mt-4">
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit 'Update User', class: 'update-button', data: { turbo: false } %>
+      <div class="form-group">
+        <%= f.submit 'Update User', class: 'btn btn-light move', data: { turbo: false } %>
+          <% end %>
+           <%= link_to 'Back', root_path, class: "btn btn-light move" %>
+          
       </div>
-    <% end %>
-
-    <div class="delete-action">
-      <%= button_to 'Delete User', delete_user_admin_user_path(@user), class: "cancel-button", method: :delete, data: { turbo: false }, data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
-    </div>
-    
-    <%= link_to 'Back', root_path %>
+       <%= button_to 'Delete User', delete_user_admin_user_path(@user), class: "btn btn-red", method: :delete, data: { turbo: false }, data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
   </div>
-</section>
+ </div>
+</div>
