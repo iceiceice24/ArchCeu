@@ -1,0 +1,7 @@
+<% file.files.each do |attach| %>
+  <% if attach.filename.to_s.include?(query) %>
+    <div class="file-search-result">
+      <h4>File: <%= link_to attach.filename, file_path(attach) %></h4>
+    </div>
+  <% end %>
+<% end %>

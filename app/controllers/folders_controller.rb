@@ -67,6 +67,7 @@ class FoldersController < ApplicationController
     end
   
     if @folder.save
+      
       redirect_to @folder, notice: "Folder was successfully created."
     else
       render :new
@@ -91,11 +92,13 @@ class FoldersController < ApplicationController
     if params[:q].blank?
       redirect_to folders_path and return
     else
-      query = params[:q]
-      @results = current_user.folders.where('lower(name) LIKE ?', "%#{query.downcase}%")
-
+      query = params[:q].downcase
+      @results = current_user.folders.where('lower(name) LIKE ?', "%#{query}%")
+      @file_results = current_user.folders.joins(files_attachments: :blob).where('lower(active_storage_blobs.filename) LIKE ?', "%#{query}%")
     end
   end
+  
+  
 
   private
 

@@ -1,6 +1,9 @@
-<h1 class="color" >Results:</h1>
+<% if @results.empty? && @file_results.empty? %>
+  <p>No results found for '<%= params[:q] %>'</p>
+<% else %>
 
-<div class="card-deck">
+  <h3>Folders</h3>
+  <div class="card-deck">
   <ul data-controller="sortable" class="folder-list">
     <% @results.each do |result| %>
       <li class="folder-item">
@@ -16,3 +19,11 @@
     <% end %>
   </ul>
 </div>
+
+  <h3>Files</h3>
+  <% @file_results.each do |file_attachment| %>
+
+    <%= render 'file_search_result', file: file_attachment, query: params[:q] %>
+  <% end %>
+<% end %>
+
