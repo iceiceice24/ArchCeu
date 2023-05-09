@@ -34,4 +34,20 @@ class User < ApplicationRecord
   def admin?
     role == 'admin'
   end
+
+  enum department: [:NONE, :ICT, :Registrar, :SciTech, :Dentistry]
+  
+  after_initialize :set_default_department, :if => :new_record?
+  def set_default_department
+    self.department ||= :NONE
+  end
+  
+  def self.with_department(department)
+    where(department: departments[department])
+  end
+
+  def self.department
+    { 'NONE' => 0, 'ICT' => 1, 'Registrar' => 2, 'SciTech' => 3, 'Dentistry' => 4 }
+  end
+
 end
