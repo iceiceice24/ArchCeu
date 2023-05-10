@@ -25,7 +25,12 @@
   </div>
 
     <div class="container-yield">
-          <%= yield %>
+      <% if notice %>
+        <div class="alert alert-primary" role="alert" style="width: 50%; height: 10%;">
+        <%= notice %>
+      <%end %>
+    </div>        
+    <%= yield %>
     </div>
     
   </body>

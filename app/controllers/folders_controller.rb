@@ -67,7 +67,6 @@ class FoldersController < ApplicationController
       if parent_folder
         @folder.parent_id = parent_folder.id
       else
-        flash[:alert] = "Invalid parent folder selected"
         render :new
         return
       end
@@ -115,7 +114,6 @@ class FoldersController < ApplicationController
     def set_folder
       @folder = Folder.find(params[:id])
     end
-
 
     def folder_params
       params.require(:folder).permit(:name,:department, :parent_folder_id, files: [])

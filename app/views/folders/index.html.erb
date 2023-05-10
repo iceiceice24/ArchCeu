@@ -2,13 +2,19 @@
   <% if @folders %>  
     <div class="card-deck">
     <ul data-controller="sortable" class="folder-list"> 
-      <h1>YOUR folders</h1>
+      <h1><%= current_user.email%> folders</h1>
       <% @folders.each do |folder| %>
       <li class="folder-item"> 
         <a href="<%= folder_path(folder) %>" class="card folder-link">
           <%= folder.department%>
           <div class="card-body">
             <div class="folder-name">              
+            </div>
+            <%= image_tag("folder.jpg", width: '90', height: '200') %>
+              </div>
+            </a>
+            <div class="folderMove">
+              <%= folder.name.truncate(10)%>
             </div>
           </li>
         <% end %>
