@@ -10,32 +10,49 @@
           <div class="card-body">
             <div class="folder-name">              
             </div>
-            <%= image_tag("folder.jpg", width: '90', height: '200') %>
-          </div>
-        </a>
-      <div class="folderMove">
-        <%= folder.name.truncate(10)%>
-      </div>
-      </li>
-      <% end %>
-    </ul>
-    </div>  
-    <table>
-    <tr>
-  <div class="vertical-add">
-  <th><%= link_to 'New Folder', new_user_folder_path(@user), type: "button", class: "btn btn-button moving " %></th>
-  </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% else %>
-    <p>No folders found.</p>
+    <% if @folders %>  
+      <div class="card-deck">
+        <ul data-controller="sortable" class="folder-list"> 
+          <% @folders.each do |folder| %>
+            <li class="folder-item"> 
+              <a href="<%= folder_path(folder) %>" class="card folder-link">
+                <div class="card-body">
+                  <div class="folder-name">              
+                  </div>
+                  <%= image_tag("folder.jpg", width: '90', height: '200') %>
+                </div>
+              </a>
+              <div class="folderMove">
+                <%= folder.name.truncate(10)%>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>  
+    <% else %>
+      <p>No folders found.</p>
+    <% end %>
   <% end %>
-  <div class="vertical-edit">
-  <th><%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button moving " %></th>
-  </div>
-</tr>
-</table>
-<% else %>
-
-
+  <table>
+        <tr>
+          <th>
+            <div class="vertical-add">
+              <%= link_to 'New Folder', new_user_folder_path(@user), type: "button", class: "btn btn-button moving " %>
+            </div>
+          </th>
+          <th>
+            <div class="vertical-edit">
+              <%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button moving " %>
+            </div>
+          </th>
+        </tr>
+      </table>
+    <% else %>
   <%= link_to "Login", new_user_session_path %>
 <% end %>
 
