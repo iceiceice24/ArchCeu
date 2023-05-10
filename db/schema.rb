@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_04_064654) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_09_061227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_04_064654) do
     t.integer "parent_folder_id"
     t.string "name"
     t.bigint "user_id", null: false
+    t.integer "department", default: 0
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 

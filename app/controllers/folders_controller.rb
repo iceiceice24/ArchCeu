@@ -4,8 +4,15 @@ class FoldersController < ApplicationController
   before_action :set_user
 
   def index
-    @folders = current_user.folders.roots
-    @folder = Folder.new
+    if current_user.admin?
+      @folders = Folder.all.roots
+    else
+      @folders = current_user.folders.roots
+      @share = Folder.all
+      @folder = Folder.new      
+    end
+
+    
   end
 
   def home
@@ -23,24 +30,24 @@ class FoldersController < ApplicationController
     @folderName = @folder.name
     @parent = @folder.parent_id
     
-    if @parent.present? 
-      flag = true
-      current_id = @parent      
-      @id_arr = Array.new()
-      @id_arr.append(@folder)
-      while flag do
-        result = Folder.find_by(id: current_id)
-          if result.parent_id.present?
-            @id_arr.append(result)           
-            current_id = result.parent_id             
-          else
-            @first_parent_id = result
-            flag = false
-          end
-      end       
-    else      
-      @first_parent_id = @folder
-    end
+      if @parent.present? 
+        flag = true
+        current_id = @parent      
+        @id_arr = Array.new()
+        @id_arr.append(@folder)
+        while flag do
+          result = Folder.find_by(id: current_id)
+            if result.parent_id.present?
+              @id_arr.append(result)           
+              current_id = result.parent_id             
+            else
+              @first_parent_id = result
+              flag = false
+            end
+        end       
+      else      
+        @first_parent_id = @folder
+      end
   end
 
   def new
@@ -66,15 +73,14 @@ class FoldersController < ApplicationController
       end
     end
   
-    if @folder.save
-      
+    if @folder.save      
       redirect_to @folder, notice: "Folder was successfully created."
     else
       render :new
     end
   end
 
-  def update
+  def update    
     if @folder.update(folder_params)
       redirect_to @folder, notice: 'Folder was successfully updated.'
     else
@@ -107,11 +113,17 @@ class FoldersController < ApplicationController
     end
 
     def set_folder
-      @folder = current_user.folders.find(params[:id])
+      if current_user.admin?        
+        @folder = Folder.find(params[:id])
+      else
+        @folder = Folder.find(params[:id])
+
+      end
+      
     end
 
     def folder_params
-      params.require(:folder).permit(:name, :parent_folder_id, files: [])
+      params.require(:folder).permit(:name,:department, :parent_folder_id, files: [])
     end
 
     def initialize_folder

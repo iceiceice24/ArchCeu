@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  has_many :folders
+  has_many :folders, dependent: :destroy
   validates :email, presence: true, format: { with: /\A[\w+\-.]+@ceu\.edu\.ph\z/i }
+  validates :role, presence: true
+  validates :department, presence: true
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :database_authenticatable, :registerable,
@@ -38,6 +41,7 @@ class User < ApplicationRecord
   enum department: [:NONE, :ICT, :Registrar, :SciTech, :Dentistry]
   
   after_initialize :set_default_department, :if => :new_record?
+  
   def set_default_department
     self.department ||= :NONE
   end
@@ -46,7 +50,7 @@ class User < ApplicationRecord
     where(department: departments[department])
   end
 
-  def self.department
+  def self.departments
     { 'NONE' => 0, 'ICT' => 1, 'Registrar' => 2, 'SciTech' => 3, 'Dentistry' => 4 }
   end
 

@@ -11,4 +11,3 @@ User.create!(
     password: 'adosh@ceu.edu.ph',
     role: :admin
   )
-  

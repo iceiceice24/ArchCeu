@@ -1,6 +1,29 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def update
+    # find the user to update
+    @user = User.find(params[:id])
+
+    # check if the current user is an admin and skip password check if true
+    if current_user.admin?
+      params[:user].delete(:password) if params[:user][:password].blank?
+      params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+    end
+
+    # update the user with the sanitized parameters
+    if @user.update(user_params)
+      # handle successful update
+    else
+      # handle update failure
+    end
+  end
+
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -70,4 +93,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private 
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :department])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:role, :department])
+  end
+  
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :role, :department)
+  end
 end

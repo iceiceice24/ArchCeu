@@ -1,10 +1,12 @@
-<% if current_user %>
+<% if current_user  %>
   <% if @folders %>  
     <div class="card-deck">
     <ul data-controller="sortable" class="folder-list"> 
+      <h1>YOUR folders</h1>
       <% @folders.each do |folder| %>
       <li class="folder-item"> 
         <a href="<%= folder_path(folder) %>" class="card folder-link">
+          <%= folder.department%>
           <div class="card-body">
             <div class="folder-name">              
             </div>
@@ -36,3 +38,10 @@
 
   <%= link_to "Login", new_user_session_path %>
 <% end %>
+
+<h1> Shared</h1>
+<% @share.each do |shared|%>
+  <% if shared.department == current_user.department%>  
+    <%= link_to shared.name, folder_path(shared)%><br>
+  <%end %>
+<%end %>

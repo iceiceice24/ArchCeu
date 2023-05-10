@@ -7,7 +7,7 @@
       </div>
       
         <% if current_user %>
-            <%= @user.department%>
+            <%= current_user.department %>
             <% if current_user.admin? %>
             <div>
             <%= link_to "All Users",  admin_users_path, class: "btn btn-light homie" %> 
@@ -19,8 +19,6 @@
           <%= link_to "Login", new_user_session_path %>
           <%= link_to "Create Account", new_user_registration_path %>
         <% end %>
-
-
     </form>
   </div>
 </div>

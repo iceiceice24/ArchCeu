@@ -7,7 +7,9 @@
         <tr>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
+            <th scope="col">Department</th>
             <th scope="col">Edit User</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -15,7 +17,9 @@
         <tr>       
             <td><%= user.email %></td>
             <td><%= user.role %></td>
-            <td><%= link_to 'Edit User', edit_admin_user_path(user.id) %></td>        
+            <td><%= user.department %> </td>
+            <td><%= link_to 'Edit User', edit_admin_user_path(user.id) %></td>  
+            
         </tr>
         <% end %>
     </tbody>

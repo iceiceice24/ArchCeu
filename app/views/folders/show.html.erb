@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if current_user || current_user.admin? %>
   <%= link_to @first_parent_id.name, folder_path(@first_parent_id), class: "font-bread"%>➤
   <% if @folder.parent_id.present? %>
     <% @id_arr.reverse().each do |array|%>

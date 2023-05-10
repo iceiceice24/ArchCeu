@@ -13,6 +13,10 @@
           <%= f.label :role, "Role:", class: 'form-label' %>
           <%= f.select :role, options_for_select([['Choose...', nil], ['User', 'user'], ['Moderator', 'moderator'], ['Admin', 'admin']]), { include_blank: true }, { class: 'form-select' } %>
         </div>
+      <div class="form-group mb-4">
+        <%= f.label :department, "Department:", class: 'form-label' %>
+        <%= f.select :department, options_for_select([['Choose...', nil], ['NONE','NONE'], ['ICT','ICT'], ['Registrar','Registrar'], ['SciTech','SciTech'], ['Dentistry','Dentistry']]), { include_blank: true }, class: 'form-control' %>
+      </div>
       <% end %>
 
       <div class="form-group-password mb-4 mt-4">
@@ -22,7 +26,7 @@
       <div class="form-group-password mb-4 mt-4">
         <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control" %>
       </div>
-
+      
       <div class="form-group">
         <%= f.submit 'Update User', class: 'btn btn-light move', data: { turbo: false } %>
           <% end %>
