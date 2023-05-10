@@ -107,8 +107,13 @@ class FoldersController < ApplicationController
     end
 
     def set_folder
-      @folder = current_user.folders.find(params[:id])
+      if current_user.admin?
+        @folder = Folder.find(params[:id])
+      else
+        @folder = current_user.folders.find(params[:id])
+      end
     end
+
 
     def folder_params
       params.require(:folder).permit(:name, :parent_folder_id, files: [])
