@@ -12,9 +12,11 @@
      <li class="list-group-item"> 📁 <%= link_to subfolder.name, subfolder, class: "link-dark " %></li>
     <% end %>
   </ul>
-
+  <% if @folder.department.present? %>
+    <h5>Department: <%= @folder.department%></h5>        
+  <% end %>
     <table class='table table table-striped'>
-      <thead>
+      <thead>        
         <tr>
           <th>File name</th>
           <th>File Type</th>

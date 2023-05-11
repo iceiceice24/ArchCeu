@@ -6,7 +6,8 @@
   <div class="card-deck">
   <ul data-controller="sortable" class="folder-list">
     <% @results.each do |result| %>
-      <li class="folder-item">
+      <% if result.department == current_user.department || result.user_id == current_user.id%>
+        <li class="folder-item">
         <a href="<%= folder_path(result) %>" class="card folder-link">
           <div class="card-body">
             <div class="folder-name">
@@ -14,11 +15,14 @@
             </div>
             <%= result.name.truncate(10) %>
           </div>
-        </a>
-      </li>
+          </a>
+        </li>
+      <% else %>
+        <h3> You don't have permission with this folder </h3>
+      <% end %>
     <% end %>
   </ul>
-</div>
+  </div>
 
   <h3>Files</h3>
   <% @file_results.each do |file_attachment| %>

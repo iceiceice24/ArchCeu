@@ -8,19 +8,14 @@ class Folder < ApplicationRecord
   has_many_attached :files, dependent: :destroy
 
 
-  enum department: [:NONE, :ICT, :Registrar, :SciTech, :Dentistry]
-
-  after_initialize :set_default_department, :if => :new_record?
-  def set_default_department
-    self.department ||= :NONE
-  end
+  enum department: [:ICT, :Registrar, :SciTech, :Dentistry]
   
   def self.with_department(department)
     where(department: departments[department])
   end
 
   def self.department
-    { 'NONE' => 0, 'ICT' => 1, 'Registrar' => 2, 'SciTech' => 3, 'Dentistry' => 4 }
+    { 'ICT' => 0, 'Registrar' => 1, 'SciTech' => 2, 'Dentistry' => 3 }
   end
 
   def files=(attachables)

@@ -98,7 +98,8 @@ class FoldersController < ApplicationController
       redirect_to folders_path and return
     else
       query = params[:q].downcase
-      @results = current_user.folders.where('lower(name) LIKE ?', "%#{query}%")
+      
+      @results = Folder.where('lower(name) LIKE ?', "%#{query}%")
       @file_results = current_user.folders.joins(files_attachments: :blob).where('lower(active_storage_blobs.filename) LIKE ?', "%#{query}%")
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_061227) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_005004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,7 +30,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_061227) do
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
+    t.bigint "created_by_id"
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["created_by_id"], name: "index_active_storage_attachments_on_created_by_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
@@ -61,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_061227) do
     t.integer "parent_folder_id"
     t.string "name"
     t.bigint "user_id", null: false
-    t.integer "department", default: 0
+    t.integer "department"
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
@@ -76,7 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_061227) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "role", default: 0
-    t.integer "department", default: 0
+    t.integer "department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -84,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_061227) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_attachments", "users", column: "created_by_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "folders", "users"
 end

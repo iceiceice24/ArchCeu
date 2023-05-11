@@ -5,8 +5,7 @@
       <h1><%= current_user.email%> folders</h1>
       <% @folders.each do |folder| %>
       <li class="folder-item"> 
-        <a href="<%= folder_path(folder) %>" class="card folder-link">
-          <%= folder.department%>
+        <a href="<%= folder_path(folder) %>" class="card folder-link">        
           <div class="card-body">
             <div class="folder-name">              
             </div>
@@ -62,9 +61,14 @@
   <%= link_to "Login", new_user_session_path %>
 <% end %>
 
-<h1> Shared</h1>
-<% @share.each do |shared|%>
-  <% if shared.department == current_user.department%>  
-    <%= link_to shared.name, folder_path(shared)%><br>
+<% if current_user.admin? %>
+<% else %>
+  <h1> Shared</h1>
+  <% @share.each do |shared|%>
+    <%if shared.department.present?%>
+      <% if shared.department == current_user.department %>  
+        <%= link_to shared.name, folder_path(shared)%><br>
+      <%end %>
+    <% end %>
   <%end %>
-<%end %>
+<% end %>
