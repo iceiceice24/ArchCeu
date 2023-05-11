@@ -11,8 +11,6 @@ class FoldersController < ApplicationController
       @share = Folder.all
       @folder = Folder.new      
     end
-
-    
   end
 
   def home
@@ -73,6 +71,10 @@ class FoldersController < ApplicationController
     end
   
     if @folder.save      
+      @folder.files.each do |file|
+        # Set the created_by attribute on the attached file's blob
+        file.blob.update(created_by_id: current_user.id)
+      end
       redirect_to @folder, notice: "Folder was successfully created."
     else
       render :new
@@ -97,30 +99,41 @@ class FoldersController < ApplicationController
     if params[:q].blank?
       redirect_to folders_path and return
     else
-      query = params[:q].downcase
-      
+      query = params[:q].downcase      
       @results = Folder.where('lower(name) LIKE ?', "%#{query}%")
-      @file_results = current_user.folders.joins(files_attachments: :blob).where('lower(active_storage_blobs.filename) LIKE ?', "%#{query}%")
+      if current_user.admin?
+        @file_results = Folder.joins(files_attachments: :blob).where('lower(active_storage_blobs.filename) LIKE ?', "%#{query}%")
+      else
+        search_files = Folder.joins(files_attachments: :blob)
+                         .where(department: current_user.department)
+      @file_results = search_files.where('lower(active_storage_blobs.filename) LIKE ?', "%#{query}%")
+      end
+      
     end
   end
-  
-  
 
   private
 
-    def set_user
-      @user = current_user
-    end
+  def set_user
+    @user = current_user
+  end
 
-    def set_folder
-      @folder = Folder.find(params[:id])
-    end
+  def set_folder
+    @folder = Folder.find(params[:id])
+  end
 
-    def folder_params
-      params.require(:folder).permit(:name,:department, :parent_folder_id, files: [])
-    end
+  def folder_params
+    params.require(:folder).permit(:name,:department, :parent_folder_id, files: []).merge(created_by_id: current_user.id)
+  end
 
-    def initialize_folder
-      @folder = Folder.new
+  def initialize_folder
+    @folder = Folder.new
+  end
+  def attach_files_to_folder(folder)
+    folder.files.each do |file|
+      # Set the created_by attribute on the attached file
+      file.blob.update(created_by: current_user)
     end
+  end
+  
 end
