@@ -81,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_021307) do
     t.datetime "remember_created_at"
     t.integer "role", default: 0
     t.integer "department"
+    t.integer "fileSizelimit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

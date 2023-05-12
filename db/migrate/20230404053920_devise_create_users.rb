@@ -38,7 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
 
       t.integer :role, default: 0
       t.integer :department
-
+      t.integer :fileSizelimit
       t.timestamps null: false
     end
 

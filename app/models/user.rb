@@ -46,5 +46,15 @@ class User < ApplicationRecord
   def self.departments
     { 'ICT' => 0, 'Registrar' => 1, 'SciTech' => 2, 'Dentistry' => 3 }
   end
+  
+  enum fileSizelimit: [:'2', :'5', :'10']
+
+  def self.with_fileSizelimit(fileSizelimit)
+    where(fileSizelimit: fileSizelimits[fileSizelimit])
+  end
+
+  def self.fileSizelimits
+    { '2' => 0, '5' => 1, '10' => 2 }
+  end
 
 end

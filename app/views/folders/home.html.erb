@@ -8,6 +8,7 @@
       
         <% if current_user %>
             <%= current_user.department %>
+            <%= current_user.fileSizelimit %>
             <% if current_user.admin? %>
             <div>
             <%= link_to "All Users",  admin_users_path, class: "btn btn-light homie" %> 
