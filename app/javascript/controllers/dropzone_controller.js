@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 import Dropzone from "dropzone";
 import { DirectUpload } from "@rails/activestorage";
 import {
@@ -8,6 +8,7 @@ import {
   insertAfter,
 } from "../helpers/dropzone";
 
+// Connects to data-controller="dropzone"
 export default class extends Controller {
   static targets = ["input"];
 
@@ -51,13 +52,21 @@ export default class extends Controller {
   get url() {
     return this.inputTarget.getAttribute("data-direct-upload-url");
   }
- 
+  get maxFiles() {
+    return this.data.get("maxFiles") || 1;
+  }
+  get maxFileSize() {
+    return this.data.get("maxFileSize") || 256;
+  }
+  get acceptedFiles() {
+    return this.data.get("acceptedFiles");
+  }
 
   get addRemoveLinks() {
     return this.data.get("addRemoveLinks") || true;
   }
   get uploadMultiple() {
-    return this.data.get("uploadMultiple") || true;
+    return this.data.get("uploadMultiple") || false;
   }
   get form() {
     return this.element.closest("form");
@@ -142,7 +151,7 @@ function createDropZone(controller) {
     headers: controller.headers,
     maxFiles: controller.maxFiles,
     maxFilesize: controller.maxFileSize,
-    acceptedFiles: 'application/pdf',
+    acceptedFiles: controller.acceptedFiles,
     addRemoveLinks: controller.addRemoveLinks,
     uploadMultiple: controller.uploadMultiple,
     autoQueue: false,
