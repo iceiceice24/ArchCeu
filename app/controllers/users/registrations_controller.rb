@@ -101,6 +101,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :role, :department,:fileSizelimit)
+    params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role, :department,:fileSizelimit)
   end
 end

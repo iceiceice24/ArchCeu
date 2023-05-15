@@ -26,8 +26,7 @@ class FoldersController < ApplicationController
     sort_direction = params[:sort] == 'asc' ? :asc : :desc
     @folderFiles = @folder.files.order(created_at: sort_direction)
     @folderName = @folder.name
-    @parent = @folder.parent_id
-    
+    @parent = @folder.parent_id    
       if @parent.present? 
         flag = true
         current_id = @parent      
@@ -50,18 +49,19 @@ class FoldersController < ApplicationController
 
   def new
     @folder = current_user.folders.build
-    @parent_folder = Folder.find_by(id: params[:parent_folder_id])
+    @parent_folder = Folder.find_by(id: params[:parent_folder_id])    
+    
   end
 
   def edit
   end
 
   def create
-    @folder = current_user.folders.build(folder_params)
-  
+    @folder = current_user.folders.build(folder_params)  
+    
     if @folder.parent_folder_id.present?
       parent_folder = current_user.folders.find_by(id: @folder.parent_folder_id)
-  
+      
       if parent_folder
         @folder.parent_id = parent_folder.id
       else

@@ -1,4 +1,5 @@
 <% if current_user  %>
+
   <% if @folders %>  
     <div class="card-deck">
     <ul data-controller="sortable" class="folder-list"> 
@@ -66,7 +67,8 @@
   <h1> Shared</h1>
   <% @share.each do |shared|%>
     <%if shared.department.present?%>
-      <% if shared.department == current_user.department %>  
+      <% if shared.department == current_user.department %>
+        
         <%= link_to shared.name, folder_path(shared)%><br>
       <%end %>
     <% end %>
