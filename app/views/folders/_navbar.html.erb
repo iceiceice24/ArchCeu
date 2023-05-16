@@ -8,7 +8,7 @@
       <%= form_tag(search_folders_path, class: "search-bar d-flex", method: "get") do %>
         <i class="uil uil-search"></i>
         <%= image_tag("search.png", width: '60', height: '40', class: "d-inline-block align-top", alt: "logo", loading: "lazy") %>
-        <%= text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Search Folder" %>
+        <%= text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Search " %>
         <!-- <%= submit_tag "Search", class: "btn btn-outline-success"%> Search button if needed -->
       <% end %>
     </div>

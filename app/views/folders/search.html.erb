@@ -10,12 +10,10 @@
         <li class="folder-item">
         <a href="<%= folder_path(result) %>" class="card folder-link">
           <div class="card-body">
-            <div class="folder-name">
               <%= image_tag("folder.jpg", width: '90', height: '100') %>
-            </div>
-            <%= result.name.truncate(10) %>
+              <%= result.name.truncate(11) %>
           </div>
-          </a>
+        </a>
         </li>
       <% end %>
     <% end %>

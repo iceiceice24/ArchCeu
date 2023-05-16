@@ -30,6 +30,4 @@ class Folder < ApplicationRecord
   def self.roots
     where(parent_folder_id: nil)
   end
-
-
   end
