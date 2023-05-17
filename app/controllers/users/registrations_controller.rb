@@ -96,11 +96,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private 
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :department,:fileSizelimit])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:role, :department,:fileSizelimit])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :department_id,:fileSizelimit,:maxFileSize])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:role, :department_id,:fileSizelimit,:maxFileSize])
   end
   
   def user_params
-    params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role, :department,:fileSizelimit)
+    params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role, :department_id,:fileSizelimit,:maxFileSize)
   end
 end

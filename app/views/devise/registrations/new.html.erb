@@ -16,7 +16,10 @@
           <%= f.label :full_name, class: "form-label" %>
           <%= f.text_field :full_name, class: "form-control", placeholder: "Last Name, First Name" %>
       </div>
-
+      <div class="form-group mb-4 mt-4">
+        <%= f.label :department_id, "Department" %>
+        <%= f.collection_select :department_id, Department.all, :id, :name, { prompt: "Select a Department" }, { class: "form-control" } %>
+      </div>
       <div class="form-group-password mb-4 mt-4">
         <% if @minimum_password_length %>
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>

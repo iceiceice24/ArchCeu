@@ -6,7 +6,8 @@ class Admin::UsersController < ApplicationController
     end
 
     def index
-        @user = User.all
+        @users = User.all
+        @department = Department.all
     end 
 
     def update
@@ -33,7 +34,7 @@ class Admin::UsersController < ApplicationController
     private
   
     def user_params
-      params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role, :department,:fileSizelimit)
+      params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role, :department_id,:fileSizelimit,:maxFileSize)
     end
     private
 

@@ -135,7 +135,7 @@ class FoldersController < ApplicationController
   end
 
   def folder_params
-    params.require(:folder).permit(:name,:department, :parent_folder_id, files: []).merge(created_by_id: current_user.id)
+    params.require(:folder).permit(:name,:department_id, :parent_folder_id, files: []).merge(created_by_id: current_user.id)
   end
 
   def initialize_folder

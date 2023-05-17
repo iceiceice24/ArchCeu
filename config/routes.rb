@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     omniauth_callbacks: 'omniauth_callbacks'
   }
+  resources :departments
   resources :folders
   root 'folders#home'
   get '/alluser', to: 'folders#alluser', as: :alluser

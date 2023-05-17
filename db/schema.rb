@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_15_063324) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_011511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_063324) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "folders", force: :cascade do |t|
     t.integer "created_by_uid"
     t.integer "parent_id"
@@ -66,7 +72,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_063324) do
     t.integer "department"
     t.bigint "created_by_id"
     t.integer "storage_limit"
+    t.bigint "department_id", null: false
     t.index ["created_by_id"], name: "index_folders_on_created_by_id"
+    t.index ["department_id"], name: "index_folders_on_department_id"
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
@@ -83,8 +91,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_063324) do
     t.integer "role", default: 0
     t.integer "fileSizeLimit", default: 0
     t.integer "department"
+    t.integer "fileSizelimit"
+    t.integer "maxFileSize"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -92,6 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_063324) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_blobs", "users", column: "created_by_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "folders", "departments"
   add_foreign_key "folders", "users"
   add_foreign_key "folders", "users", column: "created_by_id"
+  add_foreign_key "users", "departments"
 end
