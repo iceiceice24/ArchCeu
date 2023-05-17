@@ -114,7 +114,7 @@ class FoldersController < ApplicationController
         @file_results = Folder.joins(files_attachments: :blob).where('lower(active_storage_blobs.filename) LIKE ?', "%#{query}%")
       else
         search_files = Folder.joins(files_attachments: :blob)
-                         .where(department: current_user.department)
+                         .where(department_id: current_user.department_id)
       @file_results = search_files.where('lower(active_storage_blobs.filename) LIKE ?', "%#{query}%")
       end
       
