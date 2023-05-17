@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     omniauth_callbacks: 'omniauth_callbacks'
   }
+  put '/users', to: 'users/updates#update', as: 'update_user'
   resources :departments
   resources :folders
   root 'folders#home'

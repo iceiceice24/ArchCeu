@@ -4,7 +4,7 @@
       <tr>
         <th> <%= current_user.email %> </th>
         <th> <%= current_user.full_name %> </th>
-        <th> <%= current_user.department %> </th>
+        <th> <%= current_user.department.name %> </th>
         <th>
           <% if @user.department_id.present?%>
             <div class="vertical-1">

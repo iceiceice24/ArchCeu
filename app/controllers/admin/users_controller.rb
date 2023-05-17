@@ -35,8 +35,7 @@ class Admin::UsersController < ApplicationController
   
     def user_params
       params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role, :department_id,:fileSizelimit,:maxFileSize)
-    end
-    private
+    end    
 
     def authenticate_admin!
         unless current_user && current_user.admin?

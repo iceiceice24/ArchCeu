@@ -2,30 +2,31 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_user
+  
+  def update_resource(resource, params)
+    if resource.provider == 'google_oauth2'
+      params.delete('current_password')
+      resource.password = params['password']
 
-  protected
+      resource.update_without_password(params)
+    else
+      resource.update_with_password(params)
+    end
+  end
 
   def update
-    # find the user to update
-    @user = User.find(params[:id])
-
-    # check if the current user is an admin and skip password check if true
     if current_user.admin?
       params[:user].delete(:password) if params[:user][:password].blank?
       params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     end
 
-    # update the user with the sanitized parameters
     if @user.update(user_params)
-      # handle successful update
+      redirect_to root_path, notice: 'User was successfully updated.'
     else
-      # handle update failure
+      render :edit
     end
   end
-
-
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -51,17 +52,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
-
-  def update_resource(resource, params)
-    if resource.provider == 'google_oauth2'
-      params.delete('current_password')
-      resource.password = params['password']
-
-      resource.update_without_password(params)
-    else
-      resource.update_with_password(params)
-    end
-  end
   
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -71,8 +61,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -96,11 +84,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private 
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :department_id,:fileSizelimit,:maxFileSize])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:role, :department_id,:fileSizelimit,:maxFileSize])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :full_name, :department_id, :fileSizelimit, :maxFileSize])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:role, :full_name, :department_id, :fileSizelimit, :maxFileSize])
   end
-  
+
   def user_params
-    params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role, :department_id,:fileSizelimit,:maxFileSize)
+    params.require(:user).permit(:email, :full_name, :password, :password_confirmation, :role, :department_id, :fileSizelimit, :maxFileSize)
   end
+
+  def set_user
+    @user = current_user
+  end
+
 end
