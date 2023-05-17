@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :folders, dependent: :destroy
+  belongs_to :department, optional: true
+
   validates :email, presence: true, format: { with: /\A[\w+\-.]+@ceu\.edu\.ph\z/i }
   validates :role, presence: true
   
@@ -36,25 +38,6 @@ class User < ApplicationRecord
   def admin?
     role == 'admin'
   end
-
-  enum department: [ :ICT, :Registrar, :SciTech, :Dentistry]
   
-  def self.with_department(department)
-    where(department: departments[department])
-  end
-
-  def self.departments
-    { 'ICT' => 0, 'Registrar' => 1, 'SciTech' => 2, 'Dentistry' => 3 }
-  end
-  
-  enum fileSizelimit: [:'2', :'5', :'10']
-
-  def self.with_fileSizelimit(fileSizelimit)
-    where(fileSizelimit: fileSizelimits[fileSizelimit])
-  end
-
-  def self.fileSizelimits
-    { '2' => 0, '5' => 1, '10' => 2 }
-  end
 
 end

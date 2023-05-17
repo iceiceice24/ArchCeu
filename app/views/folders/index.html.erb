@@ -19,7 +19,7 @@
   <table>
     <tr>
       <th>
-      <% if @user.department.present?%>
+      <% if @user.department_id.present? %>
         <div class="vertical-add">
           <%= link_to 'New Folder', new_user_folder_path(@user), type: "button", class: "btn btn-button moving " %>
         </div>
