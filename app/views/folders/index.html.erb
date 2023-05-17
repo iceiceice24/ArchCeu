@@ -1,62 +1,63 @@
 <% if current_user  %> 
-  <div class="card-deck">
-  <ul data-controller="sortable" class="folder-list"> 
-    <h1><%= current_user.email%> folders</h1>
-    <% @folders.each do |folder| %>
-    <li class="folder-item"> 
-      <a href="<%= folder_path(folder) %>" class="card folder-link">        
-        <div class="card-body">
-          <%= image_tag("folder.jpg", width: '90', height: '200') %>
-        </div>
-        <div class="folderMove">
-            <%= folder.name.truncate(11)%>
-        </div>
-      </a>
-        </li>
-      <% end %>
-    </ul>
-    </div>  
-  <table>
-    <tr>
-      <th>
-      <% if @user.department.present?%>
-        <div class="vertical-add">
-          <%= link_to 'New Folder', new_user_folder_path(@user), type: "button", class: "btn btn-button moving " %>
-        </div>
-      <% end %>
-      </th>
-      <th>
-        <div class="vertical-edit">
-          <%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button moving " %>
-        </div>
-      </th>
-    </tr>
+  <table class="customTable">
+    <thead>
+      <tr>
+        <th> <%= current_user.email %> </th>
+        <th> <%= current_user.full_name %> </th>
+        <th> <%= current_user.department %> </th>
+        <th>
+          <% if @user.department.present?%>
+            <div class="vertical-1">
+              <%= link_to 'New Folder', new_user_folder_path(@user), type: "button", class: "btn btn-button moving " %>
+            </div>
+            <% else %>
+            <th>
+             <div class="vertical-1">
+             </div>
+            </th>
+          <% end %>
+        </th>
+        <th>
+          <div class="vertical-2">
+            <%= link_to 'Shared Folders', user_shared_path(@user), type: "button", class: "btn btn-button moving " %>
+          </div>
+        </th>
+        <th>
+          <div class="vertical-3">
+            <%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button moving " %>
+          </div>
+        </th>
+      </tr>
+    </thead>
   </table>
-  
-  <% if current_user.admin? %>
-  <% else %>
-    <h1> Shared</h1>
-    <div class="card-deck">
-    <ul data-controller="sortable" class="folder-list">
-    <% @share.each do |shared|%>
-      <%if shared.department.present?%>
-        <% if shared.department == current_user.department %>
-          <li class="folder-item">
-          <a href="<%= folder_path(shared) %>" class="card folder-link">          
-            <div class="card-body">
-              <%= image_tag("folder.jpg", width: '90', height: '200') %>
-            </div>
-            <div class="folderMove">
-              <%= shared.name.truncate(11)%>
-            </div>
-          </a>            
-          </li>
-        <%end %>
-      <% end %>
-    <%end %>
-    </ul>
-    </div>
-  <% end %>
+   <table class="customTable2">
+    <tbody>
+      <tr>
+        <td>
+          <div class="card-deck">
+            <ul data-controller="sortable" class="folder-list"> 
+              <% @folders.each do |folder| %>
+                <li class="folder-item"> 
+                  <a href="<%= folder_path(folder) %>" class="card folder-link">        
+                    <div class="card-body">
+                      <%= image_tag("folder.jpg", width: '90', height: '200') %>
+                    </div>
+                    <div class="folderMove">
+                      <%= folder.name.truncate(11)%>
+                    </div>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div> 
+        </td> 
+      </tr>
+    </tbody> 
+  </table>
+<table class="customTable4">
+
 <% else %>
   <%= link_to "Login", new_user_session_path %>
 <% end %>
+
+ 

@@ -13,6 +13,14 @@ class FoldersController < ApplicationController
     end
   end
 
+  def shared
+    if current_user.admin?
+      
+    else
+      @share = Folder.all    
+    end
+  end
+
   def home
     @folders = current_user.folders.roots
   end 
@@ -111,6 +119,9 @@ class FoldersController < ApplicationController
       end
       
     end
+
+    
+
   end
 
   private

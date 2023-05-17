@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   get '/search_folders', to: 'folders#search', as: 'search_folders'  
   delete "attachments/:id/purge", to: "attachments#purge", as: "purge_attachment"
 
+
   resources :users do
-    resources :folders, only: [:index, :new, :create]
-      resources :subfolders, controller: 'folders', only: [:new, :create]
-    
+    resources :folders, only: [:index, :new, :create, :shared]
+    get '/shared', to: 'folders#shared' 
+    resources :subfolders, controller: 'folders', only: [:new, :create]
   end
   namespace :admin do
     resources :users, only: [:index,:edit, :update] do
