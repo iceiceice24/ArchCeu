@@ -14,12 +14,12 @@
   <tbody>
     <tr>
       <td>
-        <% if current_user.admin? %>
-          <% else %>
+        <% if current_user != current_user.admin?%>
           <div class="card-deck">
             <ul data-controller="sortable" class="folder-list">
                 <% @share.each do |shared| %>
-                  <% if shared.department == current_user.department %>
+                  <% if shared.department == current_user.department%>
+                    <% if shared.user_id != current_user.id %>
                     <li class="folder-item">
                       <a href="<%= folder_path(shared) %>" class="card folder-link">
                         <div class="card-body">
@@ -29,7 +29,8 @@
                           <%= shared.name.truncate(11) %>
                         </div>
                       </a>
-                    </li>
+                    </li>                     
+                    <% end %>
                   <% end %>
                 <% end %>
             </ul>

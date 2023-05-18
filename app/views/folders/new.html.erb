@@ -26,8 +26,7 @@
             To be shared with this department: <%#= current_user.department.name %>
             <%= text_field_tag :department, current_user.department.name, readonly: true, class: "form-control", "aria-label": "readonly input example" %>
             <%= form.hidden_field :department_id, value: current_user.department_id %>
-          <% end %>
-          <%#= form.collection_select :department_id, Department.all, :id, :name, { prompt: "Select a Department" }, { class: "form-control" } %>
+          <% end %>          <%#= form.collection_select :department_id, Department.all, :id, :name, { prompt: "Select a Department" }, { class: "form-control" } %>
         </div>
         <% else %>
           <%= form.hidden_field :department_id, value: current_user.department_id %>
