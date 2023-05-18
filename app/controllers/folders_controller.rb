@@ -17,7 +17,8 @@ class FoldersController < ApplicationController
     if current_user.admin?
       
     else
-      @share = Folder.all    
+      
+      @share = Folder.all.roots  
     end
   end
 
