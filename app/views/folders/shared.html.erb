@@ -1,11 +1,21 @@
+  <table class="table">
+    <thead>
+      <tr>
+        <div class="tables-1">
+          <th> Welcome: <%= current_user.email %></th>
+          <th> <%= current_user.full_name %></th>
+          <th> Department: <%= current_user.department.name %></th>
+        </div>
+      <tr>
+    </thead>
+  </table>
+<h1 class="text-center color">Shared Folders</h1>
 <table class="customTable4">
   <tbody>
     <tr>
       <td>
         <% if current_user.admin? %>
-        
-        <% else %>
-          <h1>Shared</h1>
+          <% else %>
           <div class="card-deck">
             <ul data-controller="sortable" class="folder-list">
                 <% @share.each do |shared| %>

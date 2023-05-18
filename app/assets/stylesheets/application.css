@@ -179,7 +179,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   font-family: 'Libre Baskerville', serif;
-  max-width: 1200px;
+  max-width: 19500px;
   margin: 0 auto; /* Center the container horizontally */
   padding: 0 10px;
 }
@@ -389,7 +389,7 @@ p {
 }
 
 .vertical-1{
-  margin-left: 1050px;
+  margin-left: 10px;
   margin-top: 10px;
 }
 
@@ -401,4 +401,29 @@ p {
 .vertical-3{
   margin-left: 10px;
   margin-top: 10px;
+}
+
+.vertical-4{
+  margin-left: 1000px;
+}
+
+.tables-1{
+  margin-left: 10px;
+
+}
+
+.tables-2{
+  margin-left: 10px;
+
+}
+
+.tables-3{
+  margin-left: 10px;
+
+}
+
+.customTable-2{
+  margin-left: 700px;
+  
+
 }

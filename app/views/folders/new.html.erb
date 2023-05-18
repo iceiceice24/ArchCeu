@@ -23,7 +23,7 @@
         <%if @parent_folder.nil? %>
         <div class="form-group mb-4 mt-4">
           <%= form.label :department, class: "form-control" do %>
-            Department: <%#= current_user.department.name %>
+            To be shared with this department: <%#= current_user.department.name %>
             <%= text_field_tag :department, current_user.department.name, readonly: true, class: "form-control", "aria-label": "readonly input example" %>
             <%= form.hidden_field :department_id, value: current_user.department_id %>
           <% end %>

@@ -1,4 +1,9 @@
-<h1><%= action_name.capitalize %> Department</h1>
+<div class="containerOne">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h1 class="text-center mb-4 color">New Department</h1>
+
+
 
 <%= form_with(model: @department, local: true) do |form| %>
   <% if @department.errors.any? %>
@@ -13,14 +18,15 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control' %>
+  <div class="form-group mb-4">
+    <%= form.label :name, class: "form-label"%>
+    <%= form.text_field :name, class: 'form-control', placeholder: "Department Name"  %>
   </div>
 
   <div class="actions">
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit 'Create Department', data: {turbo: false}, class: "btn btn-button" %>
+    <%= link_to 'Back', departments_path, class: 'btn btn-button' %>
   </div>
 <% end %>
 
-<%= link_to 'Back', departments_path, class: 'btn btn-secondary' %>
+
