@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <%= favicon_link_tag 'download.jpg' %>
   <title>ArchCeu</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
@@ -26,15 +27,14 @@
 
     <div class="container-yield">
       <% if notice %>
-        <div class="alert alert-primary" role="alert" style="width: 50%; height: 10%;">
-        <%= notice %>
-      <%end %>
-    </div>     
-    <%= turbo_frame_tag "modal" %>   
-    <%= yield %>
+        <div class="alert alert-primary <%= flash.discard(:notice) ? 'fade-out' : '' %>" role="alert">
+          <%= notice %>
     </div>
+      <% end %>
+      <%= turbo_frame_tag "modal" %>
+      <%= yield %>
+        </div>
 
-    
     
   </body>
 </html>
