@@ -9,6 +9,11 @@
       <tr>
     </thead>
   </table>
+  <% if @user.department_id.present? %>
+    <div class="vertical-1">
+      <%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button moving" %>
+    </div>
+  <% end %>   
 <h1 class="text-center color">Shared Folders</h1>
 <table class="customTable4">
   <tbody>
