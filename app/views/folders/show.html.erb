@@ -24,7 +24,7 @@
             <%= link_to '▲', { sort: 'asc' }, style: 'color: white;'  %>
             <%= link_to '▼', { sort: 'desc' }, style: 'color: white;' %>
           </th>
-          <th>Action &nbsp; &nbsp; &nbsp;<%= link_to '📥', edit_folder_path(@folder), type: "button", class: "btn btn-button " %></th>   
+          <th>Action &nbsp; &nbsp; &nbsp;<%= link_to '📥', edit_folder_path(@folder),data: {turbo_frame: "modal" }, type: "button", class: "btn btn-button " %></th>   
           <th>
             <div class="dropdown">
              <%= link_to image_tag("dropdown.png", width: 30, height: 30, alt: "Dropdown Menu"), "#", class: "dropbtn" %>
@@ -60,13 +60,6 @@
     <% end %>
   </tbody>
 </table>
-
-    <%= form_for @folder, html: { multipart: true } do |r| %>
-      <%= render "folders/form", form: r %>
-        <div class="actions show-page">
-          <%= r.submit 'Upload', class: "btn btn-red", data: { turbo: false } %>
-        </div>
-    <% end %>
 
 <% else %>
   <%= link_to "Login", new_user_session_path %>

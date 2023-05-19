@@ -29,9 +29,12 @@
         <div class="alert alert-primary" role="alert" style="width: 50%; height: 10%;">
         <%= notice %>
       <%end %>
-    </div>        
+    </div>     
+    <%= turbo_frame_tag "modal" %>   
     <%= yield %>
     </div>
+
+    
     
   </body>
 </html>

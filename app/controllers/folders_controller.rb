@@ -16,8 +16,7 @@ class FoldersController < ApplicationController
   def shared
     if current_user.admin?
       
-    else
-      
+    else      
       @share = Folder.all.roots  
     end
   end

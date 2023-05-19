@@ -15,24 +15,23 @@
  */
 
 /* Overall font */
-*{
-  font-family: 'Libre Baskerville', serif;
+* {
+  font-family: "Libre Baskerville", serif;
   box-sizing: border-box;
 }
 
-
 /* Card styles */
 
- .card {
-   border: none;
-   margin-bottom: 10px;
-   margin-right: 20px;
-   margin-top: 20px;
-   margin-left: 20px; 
-   vertical-align: top; 
-   width: 70%; 
-   display: inline-block; 
- }
+.card {
+  border: none;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  vertical-align: top;
+  width: 70%;
+  display: inline-block;
+}
 
 .card-body {
   border: none;
@@ -61,30 +60,29 @@
   height: 40px;
 }
 
- .folder-link:hover {
-   color: #ff6b6b;
- }
+.folder-link:hover {
+  color: #ff6b6b;
+}
 
- .folder-list {
-    list-style-type: none; 
-    padding: 0; 
-    margin: 0; 
-  }
-  
-  .folder-item {
-    display: inline-block; 
-    margin-right: 10px;
-    text-align: center;
-    width: 220px;
-  }
-  
+.folder-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
- .no-bullets {
-    list-style-type: none; 
-    padding: 0; 
-    margin: 0; 
-  }
-  
+.folder-item {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  width: 220px;
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .blue-link {
   color: #ffffff;
   text-decoration: none;
@@ -94,14 +92,12 @@
   color: #ffffff;
   background-color: #ffb6c1;
   border-color: #ffb6c1;
-  
 }
 
 .btn-red {
   color: #ffffff;
   background-color: #942838;
   border-color: #942838;
-  
 }
 
 .title {
@@ -118,19 +114,17 @@
 }
 
 .mt-4 {
-    margin-top: 0.5rem!important;
+  margin-top: 0.5rem !important;
 }
 
-
 /* breadcrumbs */
-.font-bread{
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1.5;
-    color: #333;
-    margin-left: 10px;
-
+.font-bread {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #333;
+  margin-left: 10px;
 }
 .font-bread:hover {
   color: #fd0000;
@@ -153,13 +147,13 @@ nav {
   border-radius: 2rem;
   padding: 0.3rem 1rem;
   margin-left: auto;
-  
+
   order: 1;
 }
 
 .search-bar img {
   margin-right: 30px;
-}  
+}
 
 .search-bar input[type="search"] {
   background: transparent;
@@ -171,14 +165,14 @@ nav {
 }
 
 .search-bar input[type="search"]::placeholder {
-  font-size: 17px; 
+  font-size: 17px;
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
   max-width: 19500px;
   margin: 0 auto; /* Center the container horizontally */
   padding: 0 10px;
@@ -228,8 +222,7 @@ nav {
 
 .dropdown:hover .dropdown-content {
   display: block;
-}  
-
+}
 
 /* User style */
 .table {
@@ -249,7 +242,6 @@ nav {
   text-align: left;
 }
 
-
 .table tbody td {
   border: 1px solid #dee2e6;
   padding: 0.5rem;
@@ -257,11 +249,11 @@ nav {
 
 .table tbody tr {
   margin-bottom: 0.5rem;
-}  
+}
 
 .table tbody tr:hover {
   background-color: #dedddd;
-}  
+}
 
 a {
   color: #000000;
@@ -315,7 +307,6 @@ li.folder-item {
   text-align: center;
 }
 
-
 .folder-name {
   font-size: 20px;
   font-weight: bold;
@@ -333,37 +324,37 @@ p {
 }
 
 /* home.html.erb */
-.All-Users{
+.All-Users {
   margin-top: 2.5%;
   position: absolute;
-  left:15%;
+  left: 15%;
 }
 
-.View-Folders{
+.View-Folders {
   margin-top: 2.5%;
   position: absolute;
-  right:38%;
+  right: 38%;
 }
 
-.Log-Out{
+.Log-Out {
   margin-top: 2.5%;
   position: absolute;
-  right:18%;
+  right: 18%;
 }
 
-.color{
-  color: #2C2A6B;
+.color {
+  color: #2c2a6b;
 }
 
-.folderMove{
+.folderMove {
   margin-left: 0px;
 }
 
-.moving{
+.moving {
   margin-left: 35px;
 }
 
-.show-page{
+.show-page {
   margin-left: 48%;
   margin-top: 10px;
 }
@@ -378,52 +369,47 @@ p {
   padding: 1rem;
 }
 
-.move{
+.move {
   margin-right: 10px;
   margin-bottom: 10px;
 }
 
 /* vertical */
-.customTable{
+.customTable {
   margin: 10px;
 }
 
-.vertical-1{
+.vertical-1 {
   margin-left: 10px;
   margin-top: 10px;
 }
 
-.vertical-2{
+.vertical-2 {
   margin-left: 10px;
   margin-top: 10px;
 }
 
-.vertical-3{
+.vertical-3 {
   margin-left: 10px;
   margin-top: 10px;
 }
 
-.vertical-4{
+.vertical-4 {
   margin-left: 1000px;
 }
 
-.tables-1{
+.tables-1 {
   margin-left: 10px;
-
 }
 
-.tables-2{
+.tables-2 {
   margin-left: 10px;
-
 }
 
-.tables-3{
+.tables-3 {
   margin-left: 10px;
-
 }
 
-.customTable-2{
+.customTable-2 {
   margin-left: 700px;
-  
-
 }

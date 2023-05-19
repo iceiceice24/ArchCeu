@@ -1,7 +1,8 @@
+<%= turbo_frame_tag "modal" do %>
 <div class="containerOne">
   <div class="row justify-content-center">
     <div class="col-md-10">
-      <h1 class="text-center mb-4 color">Edit Folder</h1>
+      <h1 class="text-center mb-4 color">Update Folder</h1>
 
       <%= form_with(model: @folder, local: true) do |form| %>
         <% if @folder.errors.any? %>
@@ -36,10 +37,15 @@
 
 
         <div class="form-group ">
-          <%= form.submit 'Edit Folder', data: {turbo: false}, class: "btn btn-button" %>
+          <%= form.submit 'Update Folder', data: {turbo: false}, class: "btn btn-button" %>
           <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>
+              <%= link_to "Cancel", "#", data: {
+                controller: "modals",
+                action: "modals#close"
+              }, class: "cancel-button" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+<% end %>

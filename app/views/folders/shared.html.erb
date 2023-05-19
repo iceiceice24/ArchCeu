@@ -14,7 +14,8 @@
   <tbody>
     <tr>
       <td>
-        <% if current_user != current_user.admin?%>
+        <% if current_user.admin?%>
+        <%else%>
           <div class="card-deck">
             <ul data-controller="sortable" class="folder-list">
                 <% @share.each do |shared| %>
