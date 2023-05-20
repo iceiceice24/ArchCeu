@@ -1,5 +1,3 @@
-<!-- layout.html.erb -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,11 +28,12 @@
         <div class="alert alert-primary <%= flash.discard(:notice) ? 'fade-out' : '' %>" role="alert">
           <%= notice %>
     </div>
-      <% end %>
-      <%= turbo_frame_tag "modal" %>
+      <% end %>      
       <%= yield %>
+      <%= turbo_frame_tag "modal" %>      
         </div>
-
+        
+    
     
   </body>
 </html>

@@ -1,58 +1,57 @@
 <%= turbo_frame_tag "modal" do %>
+<div class="container-modal">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h1 class="text-center mb-4 color">New Folder</h1>
 
-  <%= @folder.name%>
-  <div class="containerOne">
-    <div class="row justify-content-center">
-      <div class="col-md-10">
-        <h1 class="text-center mb-4 color">New Folder</h1>
-
-        <%= form_with(model: [@user, @folder], url: user_folders_path(user_id: @user.id)) do |form| %>
-          <% if @folder.errors.any? %>
-            <div id="error_explanation" class="alert alert-danger">
-              <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
-              <ul>
-                <% @folder.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-
-          <div class="form-group mb-4">
-            <%= form.label :name, class: "form-label" %>
-            <%= form.text_field :name, class: "form-control", placeholder: "Folder Name" %>
-          </div>
-          <%if @parent_folder.nil? %>
-          <div class="form-group mb-4 mt-4">
-            <%= form.label :department, class: "form-control" do %>
-              To be shared with this department: <%#= current_user.department.name %>
-              <%= text_field_tag :department, current_user.department.name, readonly: true, class: "form-control", "aria-label": "readonly input example" %>
-              <%= form.hidden_field :department_id, value: current_user.department_id %>
-            <% end %>          <%#= form.collection_select :department_id, Department.all, :id, :name, { prompt: "Select a Department" }, { class: "form-control" } %>
-          </div>
-          <% else %>
-            <%= form.hidden_field :department_id, value: current_user.department_id %>
-          <% end %>
-          <%= render "folders/form", form: form %>
-
-          <div class="form-group mb-4">
-            <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
-            <%= form.hidden_field :user_id, value: current_user.id %>          
-            
-          </div>
-
-          <div class="form-group ">
-            <%= form.submit 'Create Folder', data: {turbo: false}, class: "btn btn-button" %>
-            <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>            
-              <%= link_to "Cancel", "#", data: {
-                controller: "modals",
-                action: "modals#close"
-              }, class: "cancel-button" %>
-            
+      <%= form_with(model: [@user, @folder], url: user_folders_path(user_id: @user.id)) do |form| %>
+        <% if @folder.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+            <ul>
+              <% @folder.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>
+              <% end %>
+            </ul>
           </div>
         <% end %>
-      </div>
+
+        <div class="form-group mb-4">
+          <%= form.label :name, class: "form-label" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Folder Name" %>
+        </div>
+        <%if @parent_folder.nil? %>
+        <div class="form-group mb-4 mt-4">
+          <%= form.label :department, class: "form-control" do %>
+            To be shared with this department: <%#= current_user.department.name %>
+            <%= text_field_tag :department, current_user.department.name, readonly: true, class: "form-control", "aria-label": "readonly input example" %>
+            <%= form.hidden_field :department_id, value: current_user.department_id %>
+          <% end %>          <%#= form.collection_select :department_id, Department.all, :id, :name, { prompt: "Select a Department" }, { class: "form-control" } %>
+        </div>
+        <% else %>
+          <%= form.hidden_field :department_id, value: current_user.department_id %>
+        <% end %>
+        <%= render "folders/form", form: form %>
+
+        <div class="form-group mb-4">
+          <%= form.hidden_field :parent_folder_id, value: params[:parent_folder_id] %>
+          <%= form.hidden_field :user_id, value: current_user.id %>          
+          
+        </div>
+
+        <div class="form-group ">
+          <%= form.submit 'Create Folder', data: { turbo: false }, class: "btn btn-button" %>          
+          <%= link_to "Cancel","#", data: {
+              controller: "modals",
+              action: "modals#close"
+            }, class: "btn btn-button" %>
+
+          
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
 
 <% end %>

@@ -32,9 +32,9 @@
                <div class="vertical-add">
                 <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-button " %> 
                </div>
-               <div class="vertical-edit">
-                <%= link_to 'Add files/Edit Folder', edit_folder_path(@folder), type: "button", class: "btn btn-button " %> 
-                </div>
+               <%# <div class="vertical-edit"> %>
+                <%#= link_to 'Add files/Edit Folder', edit_folder_path(@folder), type: "button", class: "btn btn-button " %> 
+                <%# </div> %>
                <div class="vertical-delete">
                 <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-button ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> 
                 </div>
@@ -60,6 +60,13 @@
     <% end %>
   </tbody>
 </table>
+
+  <%#= form_for @folder, html: { multipart: true } do |r| %>
+        <%#= render "folders/form", form: r %>
+          <%# <div class="actions show-page"> %>
+            <%#= r.submit 'Upload', class: "btn btn-red", data: { turbo: false } %>
+          <%# </div> %>
+  <%# end %>
 
 <% else %>
   <%= link_to "Login", new_user_session_path %>

@@ -1,18 +1,17 @@
-<div class="containerOne">
+<%= turbo_frame_tag "modal" do %>
+<div class="container-modal-department">
   <div class="row justify-content-center">
     <div class="col-md-10">
       <h1 class="text-center mb-4 color">New Department</h1>
-
-
 
 <%= form_with(model: @department, local: true) do |form| %>
   <% if @department.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</h2>
-
       <ul>
         <% @department.errors.full_messages.each do |message| %>
           <li><%= message %></li>
+        <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>
         <% end %>
       </ul>
     </div>
@@ -25,8 +24,12 @@
 
   <div class="actions">
     <%= form.submit 'Create Department', data: {turbo: false}, class: "btn btn-button" %>
-    <%= link_to 'Back', departments_path, class: 'btn btn-button' %>
+    <%= link_to "Cancel","#", data: {
+              controller: "modals",
+              action: "modals#close"
+            }, class: "btn btn-button" %>
   </div>
 <% end %>
 
 
+<% end %>

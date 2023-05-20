@@ -1,6 +1,6 @@
 <h1 class="text-center color">Departments</h1>
 
-<%= link_to 'New Department', new_department_path, class: 'btn btn-button', style: 'margin-bottom: 10px; margin-left: 10px;' %>
+<%= link_to 'New Department', new_department_path,data: {turbo_frame: "modal" }, class: 'btn btn-button', style: 'margin-bottom: 10px; margin-left: 10px;' %>
 
 <table class="table">
   <thead>
