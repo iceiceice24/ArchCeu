@@ -447,3 +447,11 @@ p {
   border-radius: 5px;
   padding: 20px 20px;
 }
+
+.btn-back{
+  margin-left: 290px;
+  color: #ffffff;
+  background-color: #ffb6c1;
+  border-color: #ffb6c1;
+  margin-bottom: 10px;
+}

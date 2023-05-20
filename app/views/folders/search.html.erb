@@ -2,7 +2,7 @@
   <p>No results found for '<%= params[:q] %>'</p>
 <% else %>
 
-  <h3>Folders</h3>
+  <h1 class="text-center mb-4 color">Folders</h1>
   <div class="card-deck">
   <ul data-controller="sortable" class="folder-list">
     <% @results.each do |result| %>
@@ -20,9 +20,11 @@
   </ul>
   </div>
 
-  <h3>Files</h3>
+  <h1 class="text-center mb-4 color">Files</h1>
   <% @file_results.each do |file_attachment| %>
+  <div style ="margin-left: 70px;">
     <%= render 'file_search_result', file: file_attachment, query: params[:q] %>
+  </div>
   <% end %>
 <% end %>
 
