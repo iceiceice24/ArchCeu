@@ -84,7 +84,7 @@ class FoldersController < ApplicationController
         # Set the created_by attribute on the attached file's blob
         file.blob.update(created_by_id: current_user.id)
       end
-      redirect_to @folder, notice: "Folder was successfully created."
+      redirect_to user_folders_path, notice: "Folder was successfully created."
     else
       render :new
     end
