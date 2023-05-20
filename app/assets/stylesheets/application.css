@@ -92,6 +92,7 @@
   color: #ffffff;
   background-color: #ffb6c1;
   border-color: #ffb6c1;
+  margin-bottom: 10px;
 }
 
 .btn-red {
@@ -413,3 +414,11 @@ p {
 .customTable-2 {
   margin-left: 700px;
 }
+
+
+/* modal */
+.modal-content {
+  border: 1px solid #000 !important;
+  border-radius: 5px !important;
+}
+
