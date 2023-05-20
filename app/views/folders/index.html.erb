@@ -13,7 +13,10 @@
   <% if @user.department_id.present? %>
     <div class="vertical-1">
       <%= link_to 'New Folder', new_user_folder_path(@user),data: {turbo_frame: "modal" }, type: "button", class: "btn btn-button moving" %>
-      <%= link_to 'Shared Folders', user_shared_path(@user), type: "button", class: "btn btn-button moving" %>
+        <% if current_user.admin? %>
+        <%else%>
+          <%= link_to 'Shared Folders', user_shared_path(@user), type: "button", class: "btn btn-button moving" %>
+        <% end %>
       <%= link_to 'Back', 'javascript:history.go(-1);', type: "button", class: "btn btn-button moving" %>
     </div>
   <% end %>   
