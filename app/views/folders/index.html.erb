@@ -39,38 +39,65 @@
   <%= link_to "Login", new_user_session_path %>
 <% end %>
 
-<% Department.all.each do |department| %>
-  <table class="table dark-striped">
-    <thead>
-      <tr>
-        <th><%= department.name %></th>
-        <table class="customTable2">
-    <tbody>
-      <tr>
-        <td>
-          <div class="card-deck">
-            <ul data-controller="sortable" class="folder-list">
-        <% @folders.each do |folder| %>
-          <% if folder.department == department %>            
-                <li class="folder-item"> 
-                  <a href="<%= folder_path(folder) %>" class="card folder-link">        
-                    <div class="card-body">
-                      <%= image_tag("folder.jpg", width: '90', height: '200') %>
-                    </div>
-                    <div class="folderMove">
-                      <%= folder.name.truncate(11)%>
-                    </div>
-                  </a>
-                </li>
-          <% end %>
-        <% end %>
-            </ul>
-          </div> 
-        </td> 
-      </tr>
-    </tbody> 
-  </table>
-      </tr>
-    </thead>
-  </table>  
-<% end %>
+<% if current_user.admin? %>
+  <% Department.all.each do |department| %>
+    <table class="table dark-striped">
+      <thead>
+        <tr>
+          <th><%= department.name %></th>
+            <table class="customTable2">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="card-deck">
+                      <ul data-controller="sortable" class="folder-list">
+                        <% @folders.each do |folder| %>
+                          <% if folder.department == department %>            
+                            <li class="folder-item"> 
+                              <a href="<%= folder_path(folder) %>" class="card folder-link">        
+                                <div class="card-body">
+                                  <%= image_tag("folder.jpg", width: '90', height: '200') %>
+                                </div>
+                                <div class="folderMove">
+                                  <%= folder.name.truncate(11)%>
+                                </div>
+                              </a>
+                            </li>
+                          <% end %>
+                        <% end %>
+                      </ul>
+                    </div> 
+                  </td> 
+                </tr>
+              </tbody> 
+            </table>
+          </tr>
+        </thead>
+      </table>  
+    <% end %>
+  <%else%>
+    <table class="customTable2">
+      <tbody>
+        <tr>
+          <td>
+            <div class="card-deck">
+              <ul data-controller="sortable" class="folder-list"> 
+                <% @folders.each do |folder| %>
+                  <li class="folder-item"> 
+                    <a href="<%= folder_path(folder) %>" class="card folder-link">        
+                      <div class="card-body">
+                        <%= image_tag("folder.jpg", width: '90', height: '200') %>
+                      </div>
+                      <div class="folderMove">
+                        <%= folder.name.truncate(11)%>
+                      </div>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div> 
+          </td> 
+        </tr>
+      </tbody> 
+    </table>
+  <%end%>
