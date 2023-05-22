@@ -26,18 +26,7 @@
         <td>
           <div class="card-deck">
             <ul data-controller="sortable" class="folder-list"> 
-              <% @folders.each do |folder| %>
-                <li class="folder-item"> 
-                  <a href="<%= folder_path(folder) %>" class="card folder-link">        
-                    <div class="card-body">
-                      <%= image_tag("folder.jpg", width: '90', height: '200') %>
-                    </div>
-                    <div class="folderMove">
-                      <%= folder.name.truncate(11)%>
-                    </div>
-                  </a>
-                </li>
-              <% end %>
+              
             </ul>
           </div> 
         </td> 
@@ -48,4 +37,27 @@
 
 <% else %>
   <%= link_to "Login", new_user_session_path %>
+<% end %>
+
+<% Department.all.each do |department| %>
+  <table class="table dark-striped">
+    <thead>
+      <tr>
+        <th><%= department.name %></th>
+        <% @folders.each do |folder| %>
+          <% if folder.department == department %>
+            <th>
+            <table>
+              <tbody>
+                <tr>
+                  <th><%= link_to folder.name, folder_path(folder) %></th>
+                </tr>
+              </tbody>
+            </table>
+            </th>
+          <% end %>
+        <% end %>
+      </tr>
+    </thead>
+  </table>  
 <% end %>
