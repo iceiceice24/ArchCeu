@@ -89,7 +89,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_011511) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "role", default: 0
-    t.integer "fileSizeLimit", default: 0
     t.integer "department"
     t.integer "fileSizelimit"
     t.integer "maxFileSize"
