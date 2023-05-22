@@ -443,12 +443,13 @@ p {
 }
 .container-modal-alert {
   position: fixed;
+  top: 70px;
   left: 45%;
   transform: translate(-100%, -50%);
   width: 700px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  background-color: #ffb6c1;
+  background-color: #ffffff;
 }
 .dropzone {
   min-height: 310px;
