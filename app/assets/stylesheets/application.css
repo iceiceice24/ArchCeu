@@ -441,6 +441,15 @@ p {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   background-color: lightgray;
 }
+.container-modal-alert {
+  position: fixed;
+  left: 45%;
+  transform: translate(-100%, -50%);
+  width: 700px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  background-color: #ffb6c1;
+}
 .dropzone {
   min-height: 310px;
   border: 1px solid rgba(0, 0, 0, 0.8);

@@ -15,23 +15,23 @@
 </head>
 
   <body>
+    <% if notice %>        
+      <div class="container-modal-alert alert alert-primary" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
     <div class='nav'>
     <% if current_user %>
       <%= render 'folders/navbar' %>     
     <% else %> 
       <%= render 'folders/navbarHome' %> 
     <% end %>
-  </div>
-
-    <div class="container-yield">
-      <% if notice %>
-        <div class="alert alert-primary <%= flash.discard(:notice) ? 'fade-out' : '' %>" role="alert">
-          <%= notice %>
     </div>
-      <% end %>      
+
+    <div class="container-yield">            
       <%= yield %>
       <%= turbo_frame_tag "modal" %>      
-        </div>
+    </div>
         
     
     
