@@ -90,8 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_011511) do
     t.datetime "remember_created_at"
     t.integer "role", default: 0
     t.integer "department"
-    t.integer "fileSizelimit"
-    t.integer "maxFileSize"
+    t.integer "fileSizelimit", default: 10
+    t.integer "maxFileSize", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "department_id"
