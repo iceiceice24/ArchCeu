@@ -1,3 +1,4 @@
+<%= @folder.user_id %>
 <% if current_user || current_user.admin? %>
   <%= link_to @first_parent_id.name, folder_path(@first_parent_id), class: "font-bread"%>➤
   <% if @folder.parent_id.present? %>
@@ -29,15 +30,19 @@
             <div class="dropdown">
              <%= link_to image_tag("dropdown.png", width: 30, height: 30, alt: "Dropdown Menu"), "#", class: "dropbtn" %>
               <div class="dropdown-content">
-               <div class="vertical-add">
-                <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-button " %> 
-               </div>
-                <div class="vertical-edit">
+              <div class="vertical-edit">
                 <%= link_to 'Upload', edit_folder_path(@folder),data: {turbo_frame: "modal" }, type: "button", class: "btn btn-button " %> 
-               </div> 
-               <div class="vertical-delete">
+              </div> 
+              <% if current_user.id == @folder.user_id%>
+              <div class="vertical-add">
+                <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-button " %> 
+              </div>
+              <% end %>
+              <% if current_user.id == @folder.user_id || @current_user.admin? %>
+              <div class="vertical-delete">
                 <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-button ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> 
-                </div>
+              </div>
+              <% end %>
                 <div class="vertical-back">
                  <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-button" %>
                 </div>
@@ -53,20 +58,15 @@
           <td><%= link_to attachment.filename, file_path(attachment) %></td>
           <td><%= attachment.content_type.split("/").last %></td>              
           <td><%= attachment.created_at.strftime("%B %d, %Y") %></td>
+          <% if current_user%>
           <td><%= button_to "Delete", purge_attachment_path(attachment), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %></td>
+          
           <td></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
-
-  <%#= form_for @folder, html: { multipart: true } do |r| %>
-        <%#= render "folders/form", form: r %>
-          <%# <div class="actions show-page"> %>
-            <%#= r.submit 'Upload', class: "btn btn-red", data: { turbo: false } %>
-          <%# </div> %>
-  <%# end %>
 
 <% else %>
   <%= link_to "Login", new_user_session_path %>
