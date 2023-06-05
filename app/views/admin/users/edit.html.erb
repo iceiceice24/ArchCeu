@@ -42,7 +42,7 @@
       <div class="form-group">
         <%= f.submit 'Update User', class: 'btn btn-light move', data: { turbo: false } %>
           <% end %>
-           <%= link_to 'Back', root_path, class: "btn btn-light move" %>
+          <%= link_to 'Back', 'javascript:history.go(-1);', class: "btn btn-light move" %>
           
       </div>
        <%= button_to 'Delete User', delete_user_admin_user_path(@user), class: "btn btn-red", method: :delete, data: { turbo: false }, data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %>
