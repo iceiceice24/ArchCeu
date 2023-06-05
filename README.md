@@ -106,5 +106,5 @@ then run the server by typing:
 rails s
 
 you can use the default admin for the website:
-email: 'adosh@ceu.edu.ph',
-password: 'adosh@ceu.edu.ph',
+email: 'adminceu@ceu.edu.ph',
+password: 'adminceu@ceu.edu.ph',
