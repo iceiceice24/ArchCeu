@@ -38,8 +38,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
 
       t.integer :role, default: 0
       t.integer :department
-      t.integer :fileSizelimit
-      t.integer :maxFileSize
+      t.integer :fileSizelimit, default: 10
+      t.integer :maxFileSize, default: 1
       t.timestamps null: false
     end
 

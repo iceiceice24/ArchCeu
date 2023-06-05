@@ -40,41 +40,39 @@
 <% end %>
 
 <% if current_user.admin? %>
+<div class="accordion" id="accordionExample">
   <% Department.all.each do |department| %>
-    <table class="table dark-striped">
-      <thead>
-        <tr>
-          <th><%= department.name %></th>
-            <table class="customTable2">
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="card-deck">
-                      <ul data-controller="sortable" class="folder-list">
-                        <% @folders.each do |folder| %>
-                          <% if folder.department == department %>            
-                            <li class="folder-item"> 
-                              <a href="<%= folder_path(folder) %>" class="card folder-link">        
-                                <div class="card-body">
-                                  <%= image_tag("folder.jpg", width: '90', height: '200') %>
-                                </div>
-                                <div class="folderMove">
-                                  <%= folder.name.truncate(11)%>
-                                </div>
-                              </a>
-                            </li>
-                          <% end %>
-                        <% end %>
-                      </ul>
-                    </div> 
-                  </td> 
-                </tr>
-              </tbody> 
-            </table>
-          </tr>
-        </thead>
-      </table>  
-    <% end %>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading<%= department.id %>">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= department.id %>" aria-expanded="true" aria-controls="collapse<%= department.id %>">
+          <%= department.name %>
+        </button>
+      </h2>
+      <div id="collapse<%= department.id %>" class="accordion-collapse collapse show" aria-labelledby="heading<%= department.id %>" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div class="card-deck">
+            <ul data-controller="sortable" class="folder-list">
+              <% @folders.each do |folder| %>
+                <% if folder.department == department %>            
+                  <li class="folder-item"> 
+                    <a href="<%= folder_path(folder) %>" class="card folder-link">        
+                      <div class="card-body">
+                        <%= image_tag("folder.jpg", width: '90', height: '200') %>
+                      </div>
+                      <div class="folderMove">
+                        <%= folder.name.truncate(11) %>
+                      </div>
+                    </a>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div> 
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
   <%else%>
     <table class="customTable2">
       <tbody>
