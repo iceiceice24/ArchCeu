@@ -10,7 +10,7 @@ User.create!(
     email: 'adosh@ceu.edu.ph',
     password: 'adosh@ceu.edu.ph',
     role: :admin
-  ),
+  )
   User.create!(
     email: 'adminceu@ceu.edu.ph',
     password: 'adminceu@ceu.edu.ph',
