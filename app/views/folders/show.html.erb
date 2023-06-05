@@ -24,7 +24,7 @@
             <%= link_to '▲', { sort: 'asc' }, style: 'color: white;'  %>
             <%= link_to '▼', { sort: 'desc' }, style: 'color: white;' %>
           </th>
-          <th>Action &nbsp; &nbsp; &nbsp;<%= link_to '📥', edit_folder_path(@folder),data: {turbo_frame: "modal" }, type: "button", class: "btn btn-button " %></th>   
+          <th>Action</th>   
           <th>
             <div class="dropdown">
              <%= link_to image_tag("dropdown.png", width: 30, height: 30, alt: "Dropdown Menu"), "#", class: "dropbtn" %>
@@ -32,9 +32,9 @@
                <div class="vertical-add">
                 <%= link_to 'Add folder', new_folder_path(parent_folder_id: @folder.id), class: "btn btn-button " %> 
                </div>
-               <%# <div class="vertical-edit"> %>
-                <%#= link_to 'Add files/Edit Folder', edit_folder_path(@folder), type: "button", class: "btn btn-button " %> 
-                <%# </div> %>
+                <div class="vertical-edit">
+                <%= link_to 'Upload', edit_folder_path(@folder),data: {turbo_frame: "modal" }, type: "button", class: "btn btn-button " %> 
+               </div> 
                <div class="vertical-delete">
                 <%= button_to 'Delete folder', folder_path(@folder), method: :delete, class: "btn btn-button ", data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' } %> 
                 </div>
